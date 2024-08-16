@@ -70,7 +70,7 @@ public class CharacterScript : MonoBehaviour
         {
             timeInAir += Time.deltaTime;
         }
-        UpdateAnimatorVars();
+        //UpdateAnimatorVars();
     }
     public void LoadProgress()
     {
