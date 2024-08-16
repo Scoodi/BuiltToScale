@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
-public class CharacterScript : MonoBehaviour
+public class PlatformerCharacterScript : MonoBehaviour
 {
-    public static CharacterScript Instance { get; private set; }
+    public static PlatformerCharacterScript Instance { get; private set; }
+    [SerializeField] private InputActionAsset actions;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundDetector feet;
     [SerializeField] private Animator playerAnim;
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private SpriteRenderer playerSpriteRend;
-
     [SerializeField] private AudioSource playerOneShotAudio;
 
     //Private Movement Vars
@@ -27,8 +28,12 @@ public class CharacterScript : MonoBehaviour
     private float timeInAir = 0f;
     private Transform currentPlatform;
 
+    //Private Input Actions
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction climbAction;
+
     [Header("Movement Vars")]
-    [SerializeField] private float deadZone = 0.01f;
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float downForce = 2f;
     [SerializeField] private float moveSpeed = 4f;
@@ -50,8 +55,18 @@ public class CharacterScript : MonoBehaviour
         {
             Instance = this;
         }
+        InitialiseInputActions();
         LoadProgress();
         UpdateUI();
+    }
+
+    private void InitialiseInputActions()
+    {
+        actions.FindActionMap("Platforming").Enable();
+        moveAction = actions.FindActionMap("Platforming").FindAction("Move");
+        jumpAction = actions.FindActionMap("Platforming").FindAction("Jump");
+        jumpAction.performed += _ => Jump();
+        climbAction = actions.FindActionMap("Platforming").FindAction("Climb");
     }
 
     // Update is called once per frame
@@ -87,19 +102,8 @@ public class CharacterScript : MonoBehaviour
     }
 
     void ProcessInput () {
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > deadZone) {
-            horizontalMove = Input.GetAxis("Horizontal");
-        } else if (horizontalMove != 0) {
-            horizontalMove = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            if (timeInAir <= coyoteTime) {
-                Jump();
-            } else if (!onGround) {
-                timeJumpPressed = timeInAir; 
-            }
-        }
-        if (jumping && (!Input.GetKey(KeyCode.Space)|| timeBeforeDownforce < timeInAir) && !endingJump) {
+        horizontalMove = moveAction.ReadValue<Vector2>().x;
+        if (jumping && (!Input.GetKey(KeyCode.W)|| timeBeforeDownforce < timeInAir) && !endingJump) {
             endingJump = true;
             ApplyDownForce();
         }
@@ -116,10 +120,17 @@ public class CharacterScript : MonoBehaviour
 
     }
     void Jump () {
-        rb.velocity = new Vector2(rb.velocity.x,jumpForce);
-        jumping = true;
-        timeJumpPressed = 0f;
-        playerOneShotAudio.PlayOneShot(jumpSfx[Random.Range(0,jumpSfx.Length)]);
+        if (timeInAir <= coyoteTime)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumping = true;
+            timeJumpPressed = 0f;
+            playerOneShotAudio.PlayOneShot(jumpSfx[Random.Range(0, jumpSfx.Length)]);
+        }
+        else if (!onGround)
+        {
+            timeJumpPressed = timeInAir;
+        }
     }
     public void OnLeaveGround (Transform platform = null) {
         onGround = false;

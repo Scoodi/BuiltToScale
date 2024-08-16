@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
-    [SerializeField] private CharacterScript keith;
+    [SerializeField] private PlatformerCharacterScript keith;
     // Start is called before the first frame update
     void Start()
     {
