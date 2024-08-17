@@ -156,14 +156,13 @@ public class PlatformerCharacterScript : MonoBehaviour
             climbing = false;
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
-        //TODO: Check if climbable object under player, if so, change to climbing state, stamina, controls, etc
     }
 
     void ChangeStamina ()
     {
         if (climbing)
         {
-            currentStamina -= Time.deltaTime;
+            currentStamina -= Time.deltaTime * Mathf.Max(new Vector2(horizontalMove,verticalMove).magnitude,0.1f);
             if (currentStamina <= 0)
             {
                 currentStamina = 0;
