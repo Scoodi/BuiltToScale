@@ -1097,11 +1097,11 @@ RectTransform:
   - {fileID: 1804820209}
   m_Father: {fileID: 293612867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 135, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 144, y: -89}
   m_SizeDelta: {x: 150, y: 500}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1664320928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,6 +1311,10 @@ PrefabInstance:
     - target: {fileID: 6581620631163510895, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_Name
       value: Level Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581620631163510895, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7967860611120248700, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_AnchoredPosition.x
