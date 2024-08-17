@@ -146,15 +146,31 @@ public class PlatformerCharacterScript : MonoBehaviour
             Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
             if (overlapResults.Count > 0)
             {
-                climbing = true;
-                rb.bodyType = RigidbodyType2D.Kinematic;
+                EnableClimb();
             }
 
         }
         else
         {
-            climbing = false;
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            DisableClimb();
+        }
+    }
+
+    void EnableClimb ()
+    {
+        climbing = true;
+        rb.gravityScale = 0f;
+        //rb.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    void DisableClimb(bool removeVelocity = false)
+    {
+        climbing = false;
+        rb.gravityScale = 1f;
+        //rb.bodyType = RigidbodyType2D.Dynamic;
+        if (removeVelocity)
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -166,8 +182,7 @@ public class PlatformerCharacterScript : MonoBehaviour
             if (currentStamina <= 0)
             {
                 currentStamina = 0;
-                climbing = false;
-                rb.bodyType = RigidbodyType2D.Dynamic;
+                DisableClimb();
             }
         } else if (onGround && currentStamina < maxStaminaSeconds)
         {
@@ -185,8 +200,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
         if (overlapResults.Count == 0)
         {
-            climbing = false;
-            rb.bodyType = RigidbodyType2D.Dynamic;
+            DisableClimb();
         }
     }
     void Jump () {
