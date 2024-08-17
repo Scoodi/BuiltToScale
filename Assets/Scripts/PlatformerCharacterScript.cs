@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PlatformerCharacterScript : MonoBehaviour
@@ -18,7 +19,10 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private SpriteRenderer playerSpriteRend;
     [SerializeField] private AudioSource playerOneShotAudio;
+
+    [Header("UI Elements")]
     [SerializeField] private TMP_Text debugStaminaText;
+    [SerializeField] private RectMask2D staminaMask;
 
     //Private Movement Vars
     private float horizontalMove = 0;
@@ -31,6 +35,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     private float timeJumpPressed = 0f;
     private float timeInAir = 0f;
     private float currentStamina = 3f;
+    private float staminaMaskMaxY;
     private Transform currentPlatform;
 
     //Private Input Actions
@@ -62,6 +67,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         {
             Instance = this;
         }
+        staminaMaskMaxY = staminaMask.rectTransform.rect.height;
         InitialiseInputActions();
         LoadProgress();
         UpdateUI();
@@ -116,7 +122,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
 
     void UpdateUI() {
-
+        staminaMask.padding = new Vector4(staminaMask.padding.x, staminaMaskMaxY - ((staminaMaskMaxY / 100) * ((currentStamina / maxStaminaSeconds) * 100)), staminaMask.padding.z, staminaMask.padding.w);
     }
 
     void ProcessInput () {
@@ -192,6 +198,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         {
             currentStamina = 3f;
         }
+        UpdateUI();
         debugStaminaText.text = currentStamina.ToString();
     }
     void CheckForClimbable()
@@ -200,7 +207,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
         if (overlapResults.Count == 0)
         {
-            DisableClimb();
+            DisableClimb(true);
         }
     }
     void Jump () {
