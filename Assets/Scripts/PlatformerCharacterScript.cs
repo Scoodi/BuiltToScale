@@ -19,6 +19,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private SpriteRenderer playerSpriteRend;
     [SerializeField] private AudioSource playerOneShotAudio;
+    [SerializeField] private LevelScript level;
 
     [Header("UI Elements")]
     [SerializeField] private TMP_Text debugStaminaText;
