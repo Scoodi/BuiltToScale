@@ -13,19 +13,24 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private InputActionAsset actions;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundDetector feet;
+    [SerializeField] private Collider2D grabCollider;
     [SerializeField] private Animator playerAnim;
     [SerializeField] private AudioSource playerAudio;
     [SerializeField] private SpriteRenderer playerSpriteRend;
     [SerializeField] private AudioSource playerOneShotAudio;
+    [SerializeField] private TMP_Text debugStaminaText;
 
     //Private Movement Vars
     private float horizontalMove = 0;
+    private float verticalMove = 0;
     private bool facingRight = true;
+    private bool climbing = false;
     private bool onGround;
     private bool jumping;
     private bool endingJump;
     private float timeJumpPressed = 0f;
     private float timeInAir = 0f;
+    private float currentStamina = 3f;
     private Transform currentPlatform;
 
     //Private Input Actions
@@ -40,6 +45,8 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private float timeBeforeDownforce = 1f;
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float jumpBuffer = 0.15f;
+    [SerializeField] private float maxStaminaSeconds = 3f;
+    [SerializeField] private ContactFilter2D grabContactFilter;
 
     [Header("Sound Effects")]
     [SerializeField] private AudioClip[] jumpSfx;
@@ -67,15 +74,26 @@ public class PlatformerCharacterScript : MonoBehaviour
         jumpAction = actions.FindActionMap("Platforming").FindAction("Jump");
         jumpAction.performed += _ => Jump();
         climbAction = actions.FindActionMap("Platforming").FindAction("Climb");
+        climbAction.performed += _ => Climb();
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessInput();
+        if (climbing)
+        {
+            Move();
+            CheckForClimbable();
+        }
+        ChangeStamina();
         if (horizontalMove != 0)
         {
             Move();
+        }
+        if (horizontalMove != 0 || verticalMove != 0)
+        {
+            
         }
         else if (playerAudio.isPlaying)
         {
@@ -103,6 +121,7 @@ public class PlatformerCharacterScript : MonoBehaviour
 
     void ProcessInput () {
         horizontalMove = moveAction.ReadValue<Vector2>().x;
+        verticalMove = moveAction.ReadValue<Vector2>().y;
         if (jumping && (!Input.GetKey(KeyCode.W)|| timeBeforeDownforce < timeInAir) && !endingJump) {
             endingJump = true;
             ApplyDownForce();
@@ -118,6 +137,58 @@ public class PlatformerCharacterScript : MonoBehaviour
     void UpdateAnimatorVars () {
         playerAnim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
+    }
+    void Climb()
+    {
+        if (!climbing && currentStamina > 0)
+        {
+            List<Collider2D> overlapResults = new List<Collider2D>();
+            Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
+            if (overlapResults.Count > 0)
+            {
+                climbing = true;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+
+        }
+        else
+        {
+            climbing = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+        //TODO: Check if climbable object under player, if so, change to climbing state, stamina, controls, etc
+    }
+
+    void ChangeStamina ()
+    {
+        if (climbing)
+        {
+            currentStamina -= Time.deltaTime;
+            if (currentStamina <= 0)
+            {
+                currentStamina = 0;
+                climbing = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
+        } else if (onGround && currentStamina < maxStaminaSeconds)
+        {
+            currentStamina += Time.deltaTime;
+        }
+        if (currentStamina > maxStaminaSeconds)
+        {
+            currentStamina = 3f;
+        }
+        debugStaminaText.text = currentStamina.ToString();
+    }
+    void CheckForClimbable()
+    {
+        List<Collider2D> overlapResults = new List<Collider2D>();
+        Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
+        if (overlapResults.Count == 0)
+        {
+            climbing = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
     }
     void Jump () {
         if (timeInAir <= coyoteTime)
@@ -164,10 +235,18 @@ public class PlatformerCharacterScript : MonoBehaviour
         {
             playerAudio.Play();
         }
-        rb.velocity = new Vector2(horizontalMove*moveSpeed,rb.velocity.y);
-        if ((horizontalMove < 0 && facingRight) || (horizontalMove > 0 && !facingRight)) {
-            Flip();
+        if (!climbing)
+        {
+            rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
+            if ((horizontalMove < 0 && facingRight) || (horizontalMove > 0 && !facingRight))
+            {
+                Flip();
+            }
+        } else
+        {
+            rb.velocity = new Vector2(horizontalMove * moveSpeed, verticalMove * moveSpeed);
         }
+        
     }
 
     void Flip() {
