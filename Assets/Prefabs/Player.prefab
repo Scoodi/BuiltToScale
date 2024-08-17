@@ -522,6 +522,7 @@ MonoBehaviour:
   playerSpriteRend: {fileID: 1741200012373030509}
   playerOneShotAudio: {fileID: 7659089720196080032}
   debugStaminaText: {fileID: 0}
+  staminaMask: {fileID: 0}
   jumpForce: 7
   downForce: 2
   moveSpeed: 4
@@ -562,7 +563,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c784cac598cdde4b90ce6641058feea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
