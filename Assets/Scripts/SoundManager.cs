@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
         //SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume"));
         SetMusicVolume(0.6f);
         SetSfxVolume(1.0f);
+        //ambientSource.volume = 0.5f;
     }
 
     public void Start()
@@ -66,6 +67,7 @@ public class SoundManager : MonoBehaviour
     {
         musicSourceOne.clip = LevelScript.Instance.currentLevel.levelMusic;
         musicSourceOne.Play();
+        //ambientSource.Play();
     }
     // Ideally would want to make these through events which could be subscribed to SoundEvents and then the Settings menu could invoke/call them.
     // Jammin Jammin!
