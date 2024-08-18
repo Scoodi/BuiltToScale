@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private bool cutSceneNext = false;
+    [SerializeField] private string cutsceneName;
+    [SerializeField] private LevelSO nextLevel;
     void Start()
     {
         
@@ -21,6 +24,14 @@ public class LevelEnd : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Level Complete!");
+            if (cutSceneNext)
+            {
+                SceneManager.LoadScene(cutsceneName);
+            } else
+            {
+                LevelScript.Instance.LevelCompleted(nextLevel);
+            }
+
         }
     }
 }

@@ -1,15 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class LevelScript : MonoBehaviour
 {
+    [SerializeField] private LevelSO firstLevel;
+    public static LevelScript Instance { get; private set; }
+    [SerializeField] private LevelSO currentLevel;
+    [SerializeField] private GameObject currentLevelPrefab;
     [SerializeField] private float maxVelocity = 0.1f;
-    //TODO add reference to inventory/placed rigidbodies
+    [SerializeField] private Image fadeInOutOverlay;
+    [SerializeField] private float fadeInOutTime = 1f;
+    [SerializeField] private Camera levelCamera;
+    //TODO add reference to inventory
 
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
         PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+        if (currentLevel == null)
+        {
+            LevelCompleted(firstLevel);
+        }
     }
     public void TryGoToPlatforming ()
     {
@@ -51,8 +75,41 @@ public class LevelScript : MonoBehaviour
         Debug.Log("Settled");
     }
 
-    void LoadLevel()
+    public void LevelCompleted(LevelSO nextLevel)
     {
+        StartCoroutine(LevelTransition(nextLevel));
+    }
 
+    IEnumerator LevelTransition(LevelSO nextLevel)
+    {
+        if (currentLevel != null)
+        {
+            fadeInOutOverlay.DOFade(1, fadeInOutTime);
+            yield return new WaitForSeconds(fadeInOutTime);
+        }
+        PlatformerCharacterScript.Instance.loading = true;
+        LoadLevel(nextLevel);
+        fadeInOutOverlay.DOFade(0, fadeInOutTime);
+        yield return new WaitForSeconds(fadeInOutTime);
+        PlatformerCharacterScript.Instance.loading = false;
+    }
+
+    void LoadLevel(LevelSO levelToLoad)
+    {
+        if (currentLevel != null)
+        {
+            while (InventoryUI.Instance.placedRBs.Count > 0)
+            {
+                Rigidbody2D toRemove = InventoryUI.Instance.placedRBs[0];
+                InventoryUI.Instance.placedRBs.Remove(toRemove);
+                Destroy(toRemove.gameObject);
+
+            }
+            Destroy(currentLevelPrefab);
+        }
+        levelCamera.orthographicSize = levelToLoad.cameraSize;
+        currentLevelPrefab = Instantiate(levelToLoad.levelPrefab);
+        PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos, levelToLoad.playerSpawnFacingRight);
+        currentLevel = levelToLoad;
     }
 }

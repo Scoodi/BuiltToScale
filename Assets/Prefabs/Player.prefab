@@ -149,7 +149,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.15566039, g: 1, b: 0.9319053, a: 1}
   m_FlipX: 0
@@ -514,6 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 76c10491f832ee445a2c62e41ec33044, type: 3}
+  building: 1
+  loading: 1
   rb: {fileID: 5073099514953607269}
   feet: {fileID: 5474960853297047655}
   grabCollider: {fileID: 6525580534779251869}
@@ -521,8 +523,101 @@ MonoBehaviour:
   playerAudio: {fileID: 1113002798725664724}
   playerSpriteRend: {fileID: 1741200012373030509}
   playerOneShotAudio: {fileID: 7659089720196080032}
+  level: {fileID: 0}
   debugStaminaText: {fileID: 0}
   staminaMask: {fileID: 0}
+  staminaDisplay: {fileID: 0}
+  inventoryDisplay: {fileID: 0}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8884327a-5ffb-447c-9c16-ce132fdee5b3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fb3105b4-03bb-4017-ac6e-bbbc37702835
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  climbAction:
+    m_Name: Climb
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6f90f8b3-7b2e-4a3c-b84e-485f8ec11ac8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  placeAction:
+    m_Name: Place
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c16ee7b2-d986-4d1a-b8d4-36f8c3d2a9f3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  placeMouseAction:
+    m_Name: Place Mouse
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 45e99cca-c107-4acd-9f65-82998e3b38be
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rotateAction:
+    m_Name: Rotate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 18860e0d-9b60-4435-9b89-b0ac1dcee00f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  swapModeAction:
+    m_Name: Swap Mode
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d4669b8f-ae68-44ee-90a7-83fc5a1948cd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cursorUpAction:
+    m_Name: Cursor Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 81f24cc7-d266-4f39-80da-c5ceda23ae68
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cursorDownAction:
+    m_Name: Cursor Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0fa3b042-ad00-4845-a9b0-e90d2a1bfdc8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  cancelAction:
+    m_Name: Cancel
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f159d405-0144-463d-8eb0-7b65dd3b5a60
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   jumpForce: 7
   downForce: 2
   moveSpeed: 4
