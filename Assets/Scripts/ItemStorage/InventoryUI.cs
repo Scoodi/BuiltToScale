@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     private Vector2 storedMousePos = Vector2.zero;
     private float currentBlockRotation = 0f;
     public List<Rigidbody2D> placedRBs = new List<Rigidbody2D>();
-    GameObject currentBlock;
+    GameObject currentBlock = null;
 
     private void Awake()
     {
@@ -94,12 +94,15 @@ public class InventoryUI : MonoBehaviour
 
     public void OnClickSpawnObject(GameObject gO)
     {
-        Vector3 mousepos = Input.mousePosition;
-        mousepos = Camera.main.ScreenToWorldPoint(mousepos);
-        mousepos.z = 0;
-        //Debug.Log(gO.name);
-        cursorPos = mousepos;
-        currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
+        if (currentBlock == null)
+        {
+            Vector3 mousepos = Input.mousePosition;
+            mousepos = Camera.main.ScreenToWorldPoint(mousepos);
+            mousepos.z = 0;
+            //Debug.Log(gO.name);
+            cursorPos = mousepos;
+            currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
+        }
     }
 
     void TryDropBlock()
