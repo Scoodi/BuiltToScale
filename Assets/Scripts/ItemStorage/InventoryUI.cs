@@ -124,7 +124,7 @@ public class InventoryUI : MonoBehaviour
 
     public void OnClickSpawnObject(GameObject obj)
     {
-        if(IsButtonActive[int.Parse(obj.name)] == true)
+        if(IsButtonActive[int.Parse(obj.name)] == true && PlatformerCharacterScript.Instance.building)
         {
             DestroyCurrentBlock();
             if (currentBlock == null)
@@ -198,7 +198,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void DestroyCurrentBlock()
+    public void DestroyCurrentBlock()
     {
         if(currentBlock != null)
         {
