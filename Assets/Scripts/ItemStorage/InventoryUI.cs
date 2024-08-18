@@ -48,9 +48,11 @@ public class InventoryUI : MonoBehaviour
         RefreshInventoryBlocks();
         cursorPos = Input.mousePosition;
         PlatformerCharacterScript.Instance.placeAction.performed += _ => TryDropBlock();
+        PlatformerCharacterScript.Instance.placeMouseAction.performed += _ => TryDropBlock();
         PlatformerCharacterScript.Instance.cursorUpAction.performed += _ => MoveGamepadCursorUp();
         PlatformerCharacterScript.Instance.cursorDownAction.performed += _ => MoveGamepadCursorDown();
         PlatformerCharacterScript.Instance.placeAction.performed += _ => OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
+        PlatformerCharacterScript.Instance.cancelAction.performed += _ => DestroyCurrentBlock();
     }
 
     private void Update()
@@ -65,10 +67,10 @@ public class InventoryUI : MonoBehaviour
             GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0.3f);
             usingGamepad = true;
         }
-        currentBlockRotation += PlatformerCharacterScript.Instance.rotateAction.ReadValue<float>() * 0.01f;
+        currentBlockRotation += PlatformerCharacterScript.Instance.rotateAction.ReadValue<float>() * 1.3f * Time.deltaTime;
         if (usingGamepad)
         {
-            cursorPos += PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>() * 0.1f;
+            cursorPos += PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>() * 10.0f * Time.deltaTime;
         } else
         {
             cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -110,17 +112,20 @@ public class InventoryUI : MonoBehaviour
     {
         if(IsButtonActive[int.Parse(obj.name)] == true)
         {
+            DestroyCurrentBlock();
             if (currentBlock == null)
             {
                 Vector3 mousepos = Input.mousePosition;
                 mousepos = Camera.main.ScreenToWorldPoint(mousepos);
                 mousepos.z = 0;
                 //Debug.Log(gO.name);
-                cursorPos = mousepos;
+                //cursorPos = mousepos;
+                currentGamepadPos = int.Parse(obj.name);
                 currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(obj.name)], mousepos, Quaternion.identity);
-                buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
-                IsButtonActive[int.Parse(obj.name)] = false;
+                //buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
+                //IsButtonActive[int.Parse(obj.name)] = false;
             }
+            
         }
     }
 
@@ -131,6 +136,9 @@ public class InventoryUI : MonoBehaviour
             // allow move up
             GamePadCursor.transform.position = buttonPositions[currentGamepadPos - 1].position;
             currentGamepadPos--;
+            DestroyCurrentBlock();
+            OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
+
         }
     }
 
@@ -141,6 +149,8 @@ public class InventoryUI : MonoBehaviour
             // allow move down
             GamePadCursor.transform.position = buttonPositions[currentGamepadPos + 1].position;
             currentGamepadPos++;
+            DestroyCurrentBlock();
+            OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
         }
     }
 
@@ -166,10 +176,22 @@ public class InventoryUI : MonoBehaviour
                     col.isTrigger = false;
                 }
                 placedRBs.Add(currentBlock.GetComponent<Rigidbody2D>());
+                buttonPositions[currentGamepadPos].GetComponentInChildren<Button>().interactable = false;
+                IsButtonActive[currentGamepadPos] = false;
                 currentBlock = null;
             }
             
         }
+    }
+
+    private void DestroyCurrentBlock()
+    {
+        if(currentBlock != null)
+        {
+            Destroy(currentBlock);
+            currentBlock = null;
+        }
+        
     }
 
     public void SetItemStorage(Inventory inventory)

@@ -61,6 +61,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "PlaceMouse",
+                    "type": "Button",
+                    "id": "d095e853-a89e-421a-b8ac-70db66e61eb0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Place",
                     "type": "Button",
                     "id": "692523df-762e-4011-ab21-aa015726b3a6",
@@ -100,6 +109,15 @@
                     "name": "CursorDown",
                     "type": "Button",
                     "id": "8cafc1a4-62d8-4472-abba-f38854df0deb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "2e134ffc-2f34-4f50-8da2-c2399039ea4a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -274,17 +292,6 @@
                 },
                 {
                     "name": "",
-                    "id": "cad7fac3-ef0f-473a-a249-641ba9b0f94d",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Place",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "53bf14fe-9b7b-4689-94f6-123d88f0b2f5",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
@@ -379,6 +386,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "CursorDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d4c5a62-b4d6-408b-960e-d602cb34e93c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07c0795d-5ffe-48a7-98a7-fddb53e81f7b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "670b654e-e6b9-49ae-8a63-f1e5401b3e0d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
