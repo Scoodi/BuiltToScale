@@ -112,5 +112,6 @@ public class LevelScript : MonoBehaviour
         currentLevelPrefab = Instantiate(levelToLoad.levelPrefab);
         PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos, levelToLoad.playerSpawnFacingRight);
         currentLevel = levelToLoad;
+        InventoryUI.Instance.ReloadInventoryBlocks();
     }
 }

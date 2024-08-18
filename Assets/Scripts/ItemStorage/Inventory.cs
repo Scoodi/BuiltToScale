@@ -32,6 +32,13 @@ public class Inventory : MonoBehaviour
         LoadBlocks();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ClearBlocks();
+        }
+    }
     public List<GameObject> GetLoadedBlocks()
     {
         return loadedBlocks;
@@ -66,11 +73,16 @@ public class Inventory : MonoBehaviour
 
     public void ClearBlocks()
     {
-        foreach(GameObject block in loadedBlocks)
+        while(loadedBlocks.Count > 0)
         {
-            GameObject blockToRemove = block;
+            GameObject blockToRemove = loadedBlocks[0];
             loadedBlocks.Remove(blockToRemove);
-            Destroy(blockToRemove);
         }
+    }
+
+    public void LoadNewLevelBlocks()
+    {
+        ClearBlocks();
+        LoadBlocks();
     }
 }

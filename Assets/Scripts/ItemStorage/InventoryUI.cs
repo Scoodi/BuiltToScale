@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     public static InventoryUI Instance { get; private set; }
-    [SerializeField] private Inventory inventory;
+    public Inventory inventory;
 
     private Transform blockSlotContainer;
     private Transform blockSlotTemplate;
@@ -46,7 +46,7 @@ public class InventoryUI : MonoBehaviour
     }
     private void Start()
     {
-        RefreshInventoryBlocks();
+        //RefreshInventoryBlocks();
         cursorPos = Input.mousePosition;
         PlatformerCharacterScript.Instance.placeAction.performed += _ => TryDropBlock();
         PlatformerCharacterScript.Instance.placeMouseAction.performed += _ => TryDropBlock();
@@ -107,6 +107,18 @@ public class InventoryUI : MonoBehaviour
             y++;
             count++;
         }
+    }
+
+    public void ReloadInventoryBlocks()
+    {
+        while(buttonPositions.Count > 0)
+        {
+            RectTransform toRemove = buttonPositions[0];
+            buttonPositions.Remove(toRemove);
+            Destroy(toRemove.gameObject);
+        }
+        inventory.LoadNewLevelBlocks();
+        RefreshInventoryBlocks();
     }
 
     public void OnClickSpawnObject(GameObject obj)
