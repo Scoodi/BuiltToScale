@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.UI;
 
 
@@ -22,6 +23,9 @@ public class InventoryUI : MonoBehaviour
     private float currentBlockRotation = 0f;
     public List<Rigidbody2D> placedRBs = new List<Rigidbody2D>();
     GameObject currentBlock = null;
+
+    public List<RectTransform> buttonPositions = new List<RectTransform>();
+    public List<bool> IsButtonActive = new List<bool>();
 
     private void Awake()
     {
@@ -85,6 +89,8 @@ public class InventoryUI : MonoBehaviour
             blockSlotRectTransform.gameObject.SetActive(true);
             blockSlotRectTransform.gameObject.name = count.ToString();
             blockSlotRectTransform.anchoredPosition = new Vector2(75, -75 - (y * blockSlotCellSize));
+            buttonPositions.Add(blockSlotRectTransform);
+            IsButtonActive.Add(true);
             Image image = blockSlotRectTransform.transform.Find("BlockButtonSlot").GetComponent<Image>();
             image.sprite = block.GetComponentInChildren<SpriteRenderer>().sprite;
             y++;
@@ -102,6 +108,7 @@ public class InventoryUI : MonoBehaviour
             //Debug.Log(gO.name);
             cursorPos = mousepos;
             currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
+
         }
     }
 
