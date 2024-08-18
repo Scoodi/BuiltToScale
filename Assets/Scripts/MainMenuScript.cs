@@ -19,6 +19,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void LoadLevelOne ()
     {
-        SceneManager.LoadScene("ItemStorageTestScene");
+        SceneManager.LoadScene("GameScene");
     }
 }

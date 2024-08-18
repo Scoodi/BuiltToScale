@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 219cbd122e38d024b967d79b107c6616
   - enabled: 1
-    path: Assets/Scenes/ItemStorageTestScene.unity
-    guid: fb84779781033664daf285b736de4de8
+    path: Assets/Scenes/GameScene.unity
+    guid: a51573214b024c24cbecff5ad91d0d93
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a566fdd974508654497c52b41ebe878f, type: 2}
