@@ -98,7 +98,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void OnClickSpawnObject(GameObject gO)
+    public void OnClickSpawnObject(GameObject obj)
     {
         if (currentBlock == null)
         {
@@ -107,8 +107,9 @@ public class InventoryUI : MonoBehaviour
             mousepos.z = 0;
             //Debug.Log(gO.name);
             cursorPos = mousepos;
-            currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
-
+            currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(obj.name)], mousepos, Quaternion.identity);
+            buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
+            IsButtonActive[int.Parse(obj.name)] = false;
         }
     }
 
