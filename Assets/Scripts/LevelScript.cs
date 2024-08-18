@@ -15,6 +15,7 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Image fadeInOutOverlay;
     [SerializeField] private float fadeInOutTime = 1f;
     [SerializeField] private Camera levelCamera;
+    public bool gamePaused = false;
 
     [SerializeField] private bool isFirstLevel = true;
     //TODO add reference to inventory
@@ -36,6 +37,7 @@ public class LevelScript : MonoBehaviour
     private void Start()
     {
         PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+        PlatformerCharacterScript.Instance.pauseAction.performed += _ => PauseGame();
         if (isFirstLevel)
         {
             LevelCompleted(firstLevel);
@@ -133,5 +135,18 @@ public class LevelScript : MonoBehaviour
         PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos, levelToLoad.playerSpawnFacingRight);
         currentLevel = levelToLoad;
         InventoryUI.Instance.ReloadInventoryBlocks();
+    }
+
+    void PauseGame()
+    {
+        if (gamePaused)
+        {
+            Time.timeScale = 1.0f;
+            gamePaused = false;
+        } else
+        {
+            Time.timeScale = 0f;
+            gamePaused = true;
+        }
     }
 }

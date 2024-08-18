@@ -57,6 +57,10 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
+        if (LevelScript.Instance.gamePaused)
+        {
+            return;
+        }
         if (((Vector2)Input.mousePosition -storedMousePos).magnitude > mouseDeltaActivation)
         {
             HideGamepadCursor();
@@ -125,7 +129,7 @@ public class InventoryUI : MonoBehaviour
 
     public void OnClickSpawnObject(GameObject obj)
     {
-        if(IsButtonActive[int.Parse(obj.name)] == true && PlatformerCharacterScript.Instance.building)
+        if(IsButtonActive[int.Parse(obj.name)] == true && PlatformerCharacterScript.Instance.building && !LevelScript.Instance.gamePaused)
         {
             DestroyCurrentBlock();
             if (currentBlock == null)
@@ -146,7 +150,7 @@ public class InventoryUI : MonoBehaviour
 
     public void MoveGamepadCursorUp()
     {
-        if(PlatformerCharacterScript.Instance.building)
+        if(PlatformerCharacterScript.Instance.building && !LevelScript.Instance.gamePaused)
         {
             ShowGamepadCursor();
             if (currentGamepadPos > 0)
@@ -163,7 +167,7 @@ public class InventoryUI : MonoBehaviour
 
     public void MoveGamepadCursorDown()
     {
-        if (PlatformerCharacterScript.Instance.building)
+        if (PlatformerCharacterScript.Instance.building && !LevelScript.Instance.gamePaused)
         {
             ShowGamepadCursor();
             if (currentGamepadPos < buttonPositions.Count - 1)
@@ -179,7 +183,7 @@ public class InventoryUI : MonoBehaviour
 
     void TryDropBlock()
     {
-        if (currentBlock != null)
+        if (currentBlock != null && !LevelScript.Instance.gamePaused)
         {
             bool canPlace = true;
             foreach (Collider2D col in currentBlock.GetComponents<Collider2D>())
