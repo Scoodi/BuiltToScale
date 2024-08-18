@@ -50,4 +50,9 @@ public class LevelScript : MonoBehaviour
         PlatformerCharacterScript.Instance.SwapMode();
         Debug.Log("Settled");
     }
+
+    void LoadLevel()
+    {
+
+    }
 }
