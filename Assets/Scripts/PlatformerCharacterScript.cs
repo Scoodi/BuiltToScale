@@ -49,6 +49,8 @@ public class PlatformerCharacterScript : MonoBehaviour
     public InputAction placeAction;
     public InputAction rotateAction;
     public InputAction swapModeAction;
+    public InputAction cursorUpAction;
+    public InputAction cursorDownAction;
 
     [Header("Movement Vars")]
     [SerializeField] private float jumpForce = 7f;
@@ -86,6 +88,8 @@ public class PlatformerCharacterScript : MonoBehaviour
         placeAction = actions.FindActionMap("Platforming").FindAction("Place");
         jumpAction = actions.FindActionMap("Platforming").FindAction("Jump");
         swapModeAction = actions.FindActionMap("Platforming").FindAction("Swap Mode");
+        cursorUpAction = actions.FindActionMap("Platforming").FindAction("CursorUp");
+        cursorDownAction = actions.FindActionMap("Platforming").FindAction("CursorDown");
         rotateAction = actions.FindActionMap("Platforming").FindAction("Rotate");
         jumpAction.performed += _ => Jump();
         climbAction = actions.FindActionMap("Platforming").FindAction("Climb");

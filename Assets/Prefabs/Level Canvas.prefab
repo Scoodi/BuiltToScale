@@ -864,6 +864,7 @@ MonoBehaviour:
   placedRBs: []
   buttonPositions: []
   IsButtonActive: 
+  GamePadCursor: {fileID: 9016675743943130908}
 --- !u!1 &8742645131585356998
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +877,7 @@ GameObject:
   - component: {fileID: 2956035789842486449}
   - component: {fileID: 9016675743943130908}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GamePadCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,8 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.089953184, g: 1, b: 0, a: 0.24705882}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.089953184, g: 1, b: 0, a: 0.25490198}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

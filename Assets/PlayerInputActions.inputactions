@@ -86,6 +86,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CursorUp",
+                    "type": "Button",
+                    "id": "e2338f9b-35d2-4e2d-9e35-a32c6ea34e47",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CursorDown",
+                    "type": "Button",
+                    "id": "8cafc1a4-62d8-4472-abba-f38854df0deb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -339,6 +357,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Swap Mode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b53557ab-ee05-4d81-a375-66378bcb5b64",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47b00af4-d33f-497b-90ea-bbfe01829ebe",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

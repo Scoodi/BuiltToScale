@@ -987,10 +987,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8742645131585356998, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
-      propertyPath: m_Name
-      value: GamePadCursor
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -27,6 +27,9 @@ public class InventoryUI : MonoBehaviour
     public List<RectTransform> buttonPositions = new List<RectTransform>();
     public List<bool> IsButtonActive = new List<bool>();
 
+    [SerializeField] private Image GamePadCursor;
+    private int currentGamepadPos = 0;
+
     private void Awake()
     {
         if (Instance != null)
@@ -45,16 +48,21 @@ public class InventoryUI : MonoBehaviour
         RefreshInventoryBlocks();
         cursorPos = Input.mousePosition;
         PlatformerCharacterScript.Instance.placeAction.performed += _ => TryDropBlock();
+        PlatformerCharacterScript.Instance.cursorUpAction.performed += _ => MoveGamepadCursorUp();
+        PlatformerCharacterScript.Instance.cursorDownAction.performed += _ => MoveGamepadCursorDown();
+        PlatformerCharacterScript.Instance.placeAction.performed += _ => OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
     }
 
     private void Update()
     {
         if (((Vector2)Input.mousePosition -storedMousePos).magnitude > mouseDeltaActivation)
         {
+            GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0);
             usingGamepad = false;
         }
         if (PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>().magnitude > mouseDeltaActivation) 
         {
+            GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0.3f);
             usingGamepad = true;
         }
         currentBlockRotation += PlatformerCharacterScript.Instance.rotateAction.ReadValue<float>() * 0.01f;
@@ -100,16 +108,39 @@ public class InventoryUI : MonoBehaviour
 
     public void OnClickSpawnObject(GameObject obj)
     {
-        if (currentBlock == null)
+        if(IsButtonActive[int.Parse(obj.name)] == true)
         {
-            Vector3 mousepos = Input.mousePosition;
-            mousepos = Camera.main.ScreenToWorldPoint(mousepos);
-            mousepos.z = 0;
-            //Debug.Log(gO.name);
-            cursorPos = mousepos;
-            currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(obj.name)], mousepos, Quaternion.identity);
-            buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
-            IsButtonActive[int.Parse(obj.name)] = false;
+            if (currentBlock == null)
+            {
+                Vector3 mousepos = Input.mousePosition;
+                mousepos = Camera.main.ScreenToWorldPoint(mousepos);
+                mousepos.z = 0;
+                //Debug.Log(gO.name);
+                cursorPos = mousepos;
+                currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(obj.name)], mousepos, Quaternion.identity);
+                buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
+                IsButtonActive[int.Parse(obj.name)] = false;
+            }
+        }
+    }
+
+    public void MoveGamepadCursorUp()
+    {
+        if (currentGamepadPos > 0)
+        {
+            // allow move up
+            GamePadCursor.transform.position = buttonPositions[currentGamepadPos - 1].position;
+            currentGamepadPos--;
+        }
+    }
+
+    public void MoveGamepadCursorDown()
+    {
+        if(currentGamepadPos < buttonPositions.Count - 1)
+        {
+            // allow move down
+            GamePadCursor.transform.position = buttonPositions[currentGamepadPos + 1].position;
+            currentGamepadPos++;
         }
     }
 
