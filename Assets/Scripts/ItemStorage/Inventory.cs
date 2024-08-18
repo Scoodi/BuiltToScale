@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        LoadBlocks();
+        //LoadBlocks();
     }
 
     private void Update()

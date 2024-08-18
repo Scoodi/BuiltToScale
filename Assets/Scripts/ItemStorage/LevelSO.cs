@@ -12,6 +12,9 @@ public class LevelSO : ScriptableObject
     public List<GameObject> Medium;
     public List<GameObject> Hard;
 
+    public LevelSO nextLevel;
+    public AudioClip levelMusic;
+
     public Vector2 playerSpawnPos;
     public bool playerSpawnFacingRight;
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class LevelScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Image fadeInOutOverlay;
     [SerializeField] private float fadeInOutTime = 1f;
     [SerializeField] private Camera levelCamera;
+
+    [SerializeField] private bool isFirstLevel = true;
     //TODO add reference to inventory
 
     private void Awake()
@@ -26,15 +29,18 @@ public class LevelScript : MonoBehaviour
         {
             Instance = this;
         }
-
-        if (currentLevel == null)
-        {
-            LevelCompleted(firstLevel);
-        }
     }
+
     private void Start()
     {
         PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+        if (isFirstLevel)
+        {
+            LevelCompleted(firstLevel);
+        }
+        SoundManager.Instance.InitialiseMusic();
+        InventoryUI.Instance.inventory.LoadBlocks();
+
     }
     public void TryGoToPlatforming ()
     {
@@ -92,6 +98,15 @@ public class LevelScript : MonoBehaviour
         }
         PlatformerCharacterScript.Instance.loading = true;
         LoadLevel(nextLevel);
+        if(isFirstLevel)
+        {
+            SoundManager.Instance.InitialiseMusic();
+            isFirstLevel = false;
+        }
+        else
+        {
+            SoundManager.Instance.ChangeMusicOnLevelChange();
+        }
         fadeInOutOverlay.DOFade(0, fadeInOutTime);
         yield return new WaitForSeconds(fadeInOutTime);
         PlatformerCharacterScript.Instance.loading = false;
