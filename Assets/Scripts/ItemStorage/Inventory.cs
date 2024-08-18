@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
-public enum Difficulty
-{
-    Easy, Medium, Hard
-}
-
 public class Inventory : MonoBehaviour
 {
+    public enum Difficulty
+    {
+        Easy, Medium, Hard
+    }
+
     [SerializeField] private LevelSO levelBlocks;
     [SerializeField] private List<GameObject> loadedBlocks;
 
@@ -23,9 +24,12 @@ public class Inventory : MonoBehaviour
         //difficulty = Difficulty.Easy;
 
         Debug.Log("Item storage created!");
-
-        LoadBlocks();
         
+    }
+
+    private void Start()
+    {
+        LoadBlocks();
     }
 
     public List<GameObject> GetLoadedBlocks()
@@ -35,6 +39,8 @@ public class Inventory : MonoBehaviour
 
     public void LoadBlocks()
     {
+        levelBlocks = LevelScript.Instance.currentLevel;
+
         if( difficulty == Difficulty.Easy )
         {
             foreach( GameObject block in levelBlocks.Easy)
@@ -55,6 +61,16 @@ public class Inventory : MonoBehaviour
             {
                 loadedBlocks.Add(block);
             }
+        }
+    }
+
+    public void ClearBlocks()
+    {
+        foreach(GameObject block in loadedBlocks)
+        {
+            GameObject blockToRemove = block;
+            loadedBlocks.Remove(blockToRemove);
+            Destroy(blockToRemove);
         }
     }
 }

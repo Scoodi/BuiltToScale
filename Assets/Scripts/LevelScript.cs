@@ -8,7 +8,7 @@ public class LevelScript : MonoBehaviour
 {
     [SerializeField] private LevelSO firstLevel;
     public static LevelScript Instance { get; private set; }
-    [SerializeField] private LevelSO currentLevel;
+    public LevelSO currentLevel;
     [SerializeField] private GameObject currentLevelPrefab;
     [SerializeField] private float maxVelocity = 0.1f;
     [SerializeField] private Image fadeInOutOverlay;
@@ -26,14 +26,15 @@ public class LevelScript : MonoBehaviour
         {
             Instance = this;
         }
-    }
-    private void Start()
-    {
-        PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+
         if (currentLevel == null)
         {
             LevelCompleted(firstLevel);
         }
+    }
+    private void Start()
+    {
+        PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
     }
     public void TryGoToPlatforming ()
     {
