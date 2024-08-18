@@ -60,12 +60,12 @@ public class InventoryUI : MonoBehaviour
     {
         if (((Vector2)Input.mousePosition -storedMousePos).magnitude > mouseDeltaActivation)
         {
-            GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0);
+            HideGamepadCursor();
             usingGamepad = false;
         }
-        if (PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>().magnitude > mouseDeltaActivation) 
+        if (PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>().magnitude > mouseDeltaActivation && PlatformerCharacterScript.Instance.building) 
         {
-            GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0.3f);
+            ShowGamepadCursor();
             usingGamepad = true;
         }
         currentBlockRotation += PlatformerCharacterScript.Instance.rotateAction.ReadValue<float>() * 1.3f * Time.deltaTime;
@@ -120,6 +120,7 @@ public class InventoryUI : MonoBehaviour
         }
         inventory.LoadNewLevelBlocks();
         RefreshInventoryBlocks();
+        currentGamepadPos = 0;
     }
 
     public void OnClickSpawnObject(GameObject obj)
@@ -145,26 +146,32 @@ public class InventoryUI : MonoBehaviour
 
     public void MoveGamepadCursorUp()
     {
-        if (currentGamepadPos > 0)
+        if(PlatformerCharacterScript.Instance.building)
         {
-            // allow move up
-            GamePadCursor.transform.position = buttonPositions[currentGamepadPos - 1].position;
-            currentGamepadPos--;
-            DestroyCurrentBlock();
-            OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
-
+            if (currentGamepadPos > 0)
+            {
+                // allow move up
+                GamePadCursor.transform.position = buttonPositions[currentGamepadPos - 1].position;
+                currentGamepadPos--;
+                DestroyCurrentBlock();
+                OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
+            }
         }
+        
     }
 
     public void MoveGamepadCursorDown()
     {
-        if(currentGamepadPos < buttonPositions.Count - 1)
+        if (PlatformerCharacterScript.Instance.building)
         {
-            // allow move down
-            GamePadCursor.transform.position = buttonPositions[currentGamepadPos + 1].position;
-            currentGamepadPos++;
-            DestroyCurrentBlock();
-            OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
+            if (currentGamepadPos < buttonPositions.Count - 1)
+            {
+                // allow move down
+                GamePadCursor.transform.position = buttonPositions[currentGamepadPos + 1].position;
+                currentGamepadPos++;
+                DestroyCurrentBlock();
+                OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
+            }
         }
     }
 
@@ -196,6 +203,16 @@ public class InventoryUI : MonoBehaviour
             }
             
         }
+    }
+
+    public void ShowGamepadCursor()
+    {
+        GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0.3f);
+    }
+
+    public void HideGamepadCursor() 
+    {
+        GamePadCursor.color = new Color(GamePadCursor.color.r, GamePadCursor.color.g, GamePadCursor.color.b, 0f);
     }
 
     public void DestroyCurrentBlock()
