@@ -11,7 +11,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource ambientSource;
     [SerializeField] private AudioSource soundFXObject;
 
-    [SerializeField] private AudioClip musicClipOne;
     [SerializeField] private AudioClip testClipOne;
     [SerializeField] private AudioClip testClipTwo;
     [SerializeField] private AudioClip testClipThree;
@@ -33,8 +32,6 @@ public class SoundManager : MonoBehaviour
 
         Instance = this;
 
-        DontDestroyOnLoad(gameObject);
-
         //SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume"));
         //SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume"));
         SetMusicVolume(0.6f);
@@ -51,15 +48,15 @@ public class SoundManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            PlaySFXClip(testClipOne, PlatformerCharacterScript.Instance.transform);
+            PlaySFXClip(testClipOne, Camera.main.transform);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            PlaySFXClip(testClipTwo, PlatformerCharacterScript.Instance.transform);
+            PlaySFXClip(testClipTwo, Camera.main.transform);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            PlaySFXClip(testClipThree, PlatformerCharacterScript.Instance.transform);
+            PlaySFXClip(testClipThree, Camera.main.transform);
         }
     }
 

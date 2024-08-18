@@ -120,6 +120,7 @@ public class InventoryUI : MonoBehaviour
         inventory.LoadNewLevelBlocks();
         RefreshInventoryBlocks();
         currentGamepadPos = 0;
+        GamePadCursor.transform.position = buttonPositions[0].position;
     }
 
     public void OnClickSpawnObject(GameObject obj)
@@ -147,6 +148,7 @@ public class InventoryUI : MonoBehaviour
     {
         if(PlatformerCharacterScript.Instance.building)
         {
+            ShowGamepadCursor();
             if (currentGamepadPos > 0)
             {
                 // allow move up
@@ -163,6 +165,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (PlatformerCharacterScript.Instance.building)
         {
+            ShowGamepadCursor();
             if (currentGamepadPos < buttonPositions.Count - 1)
             {
                 // allow move down
