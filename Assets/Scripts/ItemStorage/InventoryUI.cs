@@ -114,6 +114,7 @@ public class InventoryUI : MonoBehaviour
         while(buttonPositions.Count > 0)
         {
             RectTransform toRemove = buttonPositions[0];
+            IsButtonActive.Remove(IsButtonActive[0]);
             buttonPositions.Remove(toRemove);
             Destroy(toRemove.gameObject);
         }
