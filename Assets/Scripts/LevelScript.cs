@@ -73,6 +73,7 @@ public class LevelScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         InventoryUI.Instance.DestroyCurrentBlock();
+        InventoryUI.Instance.HideGamepadCursor();
         PlatformerCharacterScript.Instance.SwapMode();
         Debug.Log("Settled");
     }
