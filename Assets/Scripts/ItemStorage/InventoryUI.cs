@@ -3,25 +3,72 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
 public class InventoryUI : MonoBehaviour
 {
+    public static InventoryUI Instance { get; private set; }
     [SerializeField] private Inventory inventory;
 
     private Transform blockSlotContainer;
     private Transform blockSlotTemplate;
 
+    [SerializeField] private float mouseDeltaActivation = 0.1f;
+    private bool usingGamepad = false;
+    private Vector2 cursorPos = Vector2.zero;
+    private Vector2 storedMousePos = Vector2.zero;
+    private float currentBlockRotation = 0f;
+    public List<Rigidbody2D> placedRBs = new List<Rigidbody2D>();
+    GameObject currentBlock;
+
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
         blockSlotContainer = transform.Find("BlockSlotContainer");
         blockSlotTemplate = blockSlotContainer.Find("BlockSlotTemplate");
     }
     private void Start()
     {
         RefreshInventoryBlocks();
+        cursorPos = Input.mousePosition;
+        PlatformerCharacterScript.Instance.placeAction.performed += _ => TryDropBlock();
     }
+
+    private void Update()
+    {
+        if (((Vector2)Input.mousePosition -storedMousePos).magnitude > mouseDeltaActivation)
+        {
+            usingGamepad = false;
+        }
+        if (PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>().magnitude > mouseDeltaActivation) 
+        {
+            usingGamepad = true;
+        }
+        currentBlockRotation += PlatformerCharacterScript.Instance.rotateAction.ReadValue<float>() * 0.01f;
+        if (usingGamepad)
+        {
+            cursorPos += PlatformerCharacterScript.Instance.moveAction.ReadValue<Vector2>() * 0.1f;
+        } else
+        {
+            cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+        if (currentBlock != null)
+        {
+            currentBlock.transform.position = cursorPos;
+            currentBlock.transform.rotation = Quaternion.EulerRotation(Vector3.forward * currentBlockRotation);
+        }
+        storedMousePos = Input.mousePosition;
+    }
+
 
     private void RefreshInventoryBlocks()
     {
@@ -50,8 +97,37 @@ public class InventoryUI : MonoBehaviour
         Vector3 mousepos = Input.mousePosition;
         mousepos = Camera.main.ScreenToWorldPoint(mousepos);
         mousepos.z = 0;
-        Debug.Log(gO.name);
-        Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
+        //Debug.Log(gO.name);
+        cursorPos = mousepos;
+        currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(gO.name)], mousepos, Quaternion.identity);
+    }
+
+    void TryDropBlock()
+    {
+        if (currentBlock != null)
+        {
+            bool canPlace = true;
+            foreach (Collider2D col in currentBlock.GetComponents<Collider2D>())
+            {
+                List<Collider2D> overlapResults = new List<Collider2D>();
+                Physics2D.OverlapCollider(col, new ContactFilter2D(), overlapResults);
+                if (overlapResults.Count != 0)
+                {
+                    canPlace = false;
+                }
+            }
+            if (canPlace)
+            {
+                currentBlock.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                foreach (Collider2D col in currentBlock.GetComponents<Collider2D>())
+                {
+                    col.isTrigger = false;
+                }
+                placedRBs.Add(currentBlock.GetComponent<Rigidbody2D>());
+                currentBlock = null;
+            }
+            
+        }
     }
 
     public void SetItemStorage(Inventory inventory)

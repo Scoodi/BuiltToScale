@@ -11,7 +11,8 @@ using Random = UnityEngine.Random;
 public class PlatformerCharacterScript : MonoBehaviour
 {
     public static PlatformerCharacterScript Instance { get; private set; }
-    [SerializeField] private InputActionAsset actions;
+    public InputActionAsset actions;
+    public bool building = true;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundDetector feet;
     [SerializeField] private Collider2D grabCollider;
@@ -24,6 +25,8 @@ public class PlatformerCharacterScript : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private TMP_Text debugStaminaText;
     [SerializeField] private RectMask2D staminaMask;
+    [SerializeField] private GameObject staminaDisplay;
+    [SerializeField] private GameObject inventoryDisplay;
 
     //Private Movement Vars
     private float horizontalMove = 0;
@@ -39,10 +42,13 @@ public class PlatformerCharacterScript : MonoBehaviour
     private float staminaMaskMaxY;
     private Transform currentPlatform;
 
-    //Private Input Actions
-    private InputAction moveAction;
-    private InputAction jumpAction;
-    private InputAction climbAction;
+    //Input Actions
+    public InputAction moveAction;
+    public InputAction jumpAction;
+    public InputAction climbAction;
+    public InputAction placeAction;
+    public InputAction rotateAction;
+    public InputAction swapModeAction;
 
     [Header("Movement Vars")]
     [SerializeField] private float jumpForce = 7f;
@@ -52,13 +58,12 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float jumpBuffer = 0.15f;
     [SerializeField] private float maxStaminaSeconds = 3f;
-    [SerializeField] private ContactFilter2D grabContactFilter;
+    public ContactFilter2D grabContactFilter;
 
     [Header("Sound Effects")]
     [SerializeField] private AudioClip[] jumpSfx;
     [SerializeField] private AudioClip landSfx;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance != null)
         {
@@ -78,7 +83,10 @@ public class PlatformerCharacterScript : MonoBehaviour
     {
         actions.FindActionMap("Platforming").Enable();
         moveAction = actions.FindActionMap("Platforming").FindAction("Move");
+        placeAction = actions.FindActionMap("Platforming").FindAction("Place");
         jumpAction = actions.FindActionMap("Platforming").FindAction("Jump");
+        swapModeAction = actions.FindActionMap("Platforming").FindAction("Swap Mode");
+        rotateAction = actions.FindActionMap("Platforming").FindAction("Rotate");
         jumpAction.performed += _ => Jump();
         climbAction = actions.FindActionMap("Platforming").FindAction("Climb");
         climbAction.performed += _ => Climb();
@@ -127,11 +135,15 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
 
     void ProcessInput () {
-        horizontalMove = moveAction.ReadValue<Vector2>().x;
-        verticalMove = moveAction.ReadValue<Vector2>().y;
-        if (jumping && (!Input.GetKey(KeyCode.W)|| timeBeforeDownforce < timeInAir) && !endingJump) {
-            endingJump = true;
-            ApplyDownForce();
+        if (!building)
+        {
+            horizontalMove = moveAction.ReadValue<Vector2>().x;
+            verticalMove = moveAction.ReadValue<Vector2>().y;
+            if (jumping && (!Input.GetKey(KeyCode.W) || timeBeforeDownforce < timeInAir) && !endingJump)
+            {
+                endingJump = true;
+                ApplyDownForce();
+            }
         }
     }
 
@@ -147,7 +159,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
     void Climb()
     {
-        if (!climbing && currentStamina > 0)
+        if (!building && !climbing && currentStamina > 0)
         {
             List<Collider2D> overlapResults = new List<Collider2D>();
             Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
@@ -212,7 +224,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         }
     }
     void Jump () {
-        if (timeInAir <= coyoteTime)
+        if (timeInAir <= coyoteTime && !building)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumping = true;
@@ -268,6 +280,13 @@ public class PlatformerCharacterScript : MonoBehaviour
             rb.velocity = new Vector2(horizontalMove * moveSpeed, verticalMove * moveSpeed);
         }
         
+    }
+
+    public void SwapMode(bool buildMode = false)
+    {
+        building = buildMode;
+        inventoryDisplay.SetActive(buildMode);
+        staminaDisplay.SetActive(!buildMode);
     }
 
     void Flip() {

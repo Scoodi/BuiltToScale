@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class LevelScript : MonoBehaviour
 {
-    [SerializeField] private PlatformerCharacterScript player;
-    private List<Rigidbody2D> debugRigidbodies = new List<Rigidbody2D>();
     [SerializeField] private float maxVelocity = 0.1f;
     //TODO add reference to inventory/placed rigidbodies
-    private bool building = true;
 
+    private void Start()
+    {
+        PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+    }
     public void TryGoToPlatforming ()
     {
-        if (building)
+        if (PlatformerCharacterScript.Instance.building)
         {
-            StartCoroutine(SettleCountdown());
+            StartCoroutine("SettleCountdown");
         } else
         {
             Debug.Log("Restart level to rebuild");
@@ -24,7 +25,7 @@ public class LevelScript : MonoBehaviour
     bool CheckIfSettled ()
     {
         bool settled = true;
-        foreach (Rigidbody2D rb in debugRigidbodies)
+        foreach (Rigidbody2D rb in InventoryUI.Instance.placedRBs)
         {
             if (rb.velocity.magnitude > maxVelocity)
             {
@@ -41,11 +42,12 @@ public class LevelScript : MonoBehaviour
         {
             if (!CheckIfSettled())
             {
-                StopCoroutine(SettleCountdown());
+                StopCoroutine("SettleCountdown");
             }
             Debug.Log("Waited " + i + " seconds");
             yield return new WaitForSeconds(1f);
         }
+        PlatformerCharacterScript.Instance.SwapMode();
         Debug.Log("Settled");
     }
 }

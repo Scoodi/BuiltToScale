@@ -10,9 +10,9 @@ public enum Difficulty
 
 public class Inventory : MonoBehaviour
 {
-    
     [SerializeField] private LevelInventorySO levelBlocks;
     [SerializeField] private List<GameObject> loadedBlocks;
+
 
     public Difficulty difficulty;
 
