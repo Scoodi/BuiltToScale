@@ -699,6 +699,26 @@ PrefabInstance:
       propertyPath: levelCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: piecesSetSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ae1040fabb284a30be38e7fbb4406e7, type: 3}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: piecesNotSetSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a7a3d5235adf42b981c4399527fc146, type: 3}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: countdownSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0886ce1170e784cd2bc6760f3dfcee71, type: 3}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: countdownSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7aed0cd2cd9804541a26aa02bb49ebc8, type: 3}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: countdownSound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5b3357d73a8cf419c80ea5b5ce0a9a84, type: 3}
     - target: {fileID: 6411351130484049359, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0

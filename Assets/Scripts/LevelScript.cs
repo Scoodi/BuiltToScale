@@ -28,7 +28,7 @@ public class LevelScript : MonoBehaviour
     [Header("AudioClips")]
     [SerializeField] private AudioClip piecesNotSetSound;
     [SerializeField] private AudioClip piecesSetSound;
-    [SerializeField] private AudioClip countdownSound;
+    [SerializeField] private AudioClip[] countdownSound;
 
 
 
@@ -68,7 +68,7 @@ public class LevelScript : MonoBehaviour
         };
     }
 
-    bool CheckIfSettled()
+    bool CheckIfSettled(int cdNum)
     {
         bool settled = true;
         foreach (Rigidbody2D rb in InventoryUI.Instance.placedRBs)
@@ -86,7 +86,7 @@ public class LevelScript : MonoBehaviour
         }
         if(settled)
         {
-            SoundManager.Instance.PlaySFXClip(countdownSound, Camera.main.transform);
+            SoundManager.Instance.PlaySFXClip(countdownSound[cdNum], Camera.main.transform);
         }    
             
 
@@ -103,7 +103,7 @@ public class LevelScript : MonoBehaviour
                 countdownText.color = Color.white;
                 countdownText.DOKill();
                 countdownText.text = (3 - i).ToString();
-                if (!CheckIfSettled())
+                if (!CheckIfSettled(2-i))
                 {
                     StopCoroutine("SettleCountdown");
                 }

@@ -29,6 +29,13 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image GamePadCursor;
     private int currentGamepadPos = 0;
 
+    [Header("Inventory UI")]
+    [SerializeField] private float blockSlotCellSize = 125f;
+    [SerializeField] private float menuBottomPadding = 0f;
+    [SerializeField] private float xPositionOffset = 75f;
+    [SerializeField] private float yPositionOffset = -75f;
+
+
     [Header("Audio Clips")]
     public AudioClip placeBlockSound;
     public AudioClip selectBlockSound;
@@ -96,10 +103,9 @@ public class InventoryUI : MonoBehaviour
     {
         int y = 0;
         int count = 0;
-        float blockSlotCellSize = 110f;
 
         RectTransform UISize = GetComponent<RectTransform>();
-        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50 + (blockSlotCellSize * inventory.GetLoadedBlocks().Count + 1));
+        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((blockSlotCellSize * 1.1f) * inventory.GetLoadedBlocks().Count + 1));
 
         foreach(GameObject block in inventory.GetLoadedBlocks())
         {
