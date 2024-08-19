@@ -35,6 +35,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     private bool onGround;
     private bool jumping;
     private bool endingJump;
+    private bool walkingSoundIsPlaying = false;
     private float timeJumpPressed = 0f;
     private float timeInAir = 0f;
     private float currentStamina = 3f;
@@ -265,9 +266,10 @@ public class PlatformerCharacterScript : MonoBehaviour
 
     IEnumerator PlayWalkingSound()
     {
-        if(onGround)
-
-        yield return new WaitForSeconds(0f);
+        AudioClip toPlay = walkingSfx[Random.Range(0, walkingSfx.Length - 1)];
+        SoundManager.Instance.PlaySFXClip(toPlay, Camera.main.transform);
+        yield return new WaitForSeconds(toPlay.length);
+        walkingSoundIsPlaying = false;
     }
 
     public void OnEnterGround(Transform platform = null) {
@@ -292,6 +294,11 @@ public class PlatformerCharacterScript : MonoBehaviour
         
         if (!climbing)
         {
+            if (!walkingSoundIsPlaying && onGround)
+            {
+                walkingSoundIsPlaying = true;
+                StartCoroutine(PlayWalkingSound());
+            }
             rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
             if ((horizontalMove < 0 && facingRight) || (horizontalMove > 0 && !facingRight))
             {
@@ -299,6 +306,11 @@ public class PlatformerCharacterScript : MonoBehaviour
             }
         } else
         {
+            if (!walkingSoundIsPlaying && climbing)
+            {
+                walkingSoundIsPlaying = true;
+                StartCoroutine(PlayWalkingSound());
+            }
             rb.velocity = new Vector2(horizontalMove * moveSpeed, verticalMove * moveSpeed);
         }
         

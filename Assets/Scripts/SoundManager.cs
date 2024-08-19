@@ -36,6 +36,7 @@ public class SoundManager : MonoBehaviour
 
         //SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume"));
         //SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume"));
+        SetMasterVolume(1.0f);
         SetMusicVolume(0.6f);
         SetSfxVolume(1.0f);
         //ambientSource.volume = 0.5f;
@@ -146,7 +147,7 @@ public class SoundManager : MonoBehaviour
 
         audioSource.clip = audioClip;
 
-        audioSource.volume = sfxVolume;
+        audioSource.volume = GetSfxVolume();
 
         audioSource.Play();
 
