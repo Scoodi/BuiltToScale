@@ -21,10 +21,13 @@ MonoBehaviour:
   - {fileID: 8580225913947821665, guid: 7d3274afb6c5aad44877e1bcc914ec85, type: 3}
   - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   Medium:
+  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
+  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
+  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
   - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
   - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
-  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
-  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
+  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   Hard:
   - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
   - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
