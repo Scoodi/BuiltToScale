@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip testClipTwo;
     [SerializeField] private AudioClip testClipThree;
 
+    [SerializeField] private bool isMainMenu = false;
     private float sfxVolume;
     private float musicVolume;
 
@@ -62,7 +63,10 @@ public class SoundManager : MonoBehaviour
 
     public void InitialiseMusic()
     {
-        musicSourceOne.clip = LevelScript.Instance.currentLevel.levelMusic;
+        if (!isMainMenu)
+        {
+            musicSourceOne.clip = LevelScript.Instance.currentLevel.levelMusic;
+        }
         musicSourceOne.Play();
         //ambientSource.Play();
     }
