@@ -85,7 +85,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         UpdateUI();
     }
 
-    public void ResetPlayer (Vector2 pos, bool rightFacing)
+    public void ResetPlayer (Vector2 pos)
     {
         SwapMode(true);
         currentStamina = maxStaminaSeconds;
@@ -152,7 +152,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     {
         horizontalMove = moveAction.ReadValue<Vector2>().x;
         verticalMove = moveAction.ReadValue<Vector2>().y;
-        if (jumping && (!Input.GetKey(KeyCode.W) || timeBeforeDownforce < timeInAir) && !endingJump)
+        if (jumping && (!(jumpAction.ReadValue<float>() > 0) || timeBeforeDownforce < timeInAir) && !endingJump)
         {
             endingJump = true;
             ApplyDownForce();

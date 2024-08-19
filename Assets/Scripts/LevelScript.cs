@@ -166,7 +166,7 @@ public class LevelScript : MonoBehaviour
         }
         levelCamera.orthographicSize = levelToLoad.cameraSize;
         currentLevelPrefab = Instantiate(levelToLoad.levelPrefab);
-        PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos, levelToLoad.playerSpawnFacingRight);
+        PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos);
         currentLevel = levelToLoad;
         InventoryUI.Instance.ReloadInventoryBlocks();
     }
