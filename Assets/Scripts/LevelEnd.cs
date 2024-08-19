@@ -7,6 +7,9 @@ public class LevelEnd : MonoBehaviour
 {
     [SerializeField] private bool cutSceneNext = false;
     [SerializeField] private string cutsceneName;
+
+    [SerializeField] private AudioClip levelCompleteSound;
+    [SerializeField] private AudioClip stageCompleteSound;
     void Start()
     {
         
@@ -25,9 +28,11 @@ public class LevelEnd : MonoBehaviour
             Debug.Log("Level Complete!");
             if (cutSceneNext)
             {
+                SoundManager.Instance.PlaySFXClip(stageCompleteSound, Camera.main.transform);
                 SceneManager.LoadScene(cutsceneName);
             } else
             {
+                SoundManager.Instance.PlaySFXClip(levelCompleteSound, Camera.main.transform);
                 LevelScript.Instance.LevelCompleted(LevelScript.Instance.currentLevel.nextLevel);
             }
 

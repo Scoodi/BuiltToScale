@@ -135,4 +135,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutSceneNext: 0
   cutsceneName: 
-  nextLevel: {fileID: 11400000, guid: 2de5a80f7e980964ab7aecf18211a019, type: 2}
+  levelCompleteSound: {fileID: 8300000, guid: 81e9def0bda484595949b3b794558278, type: 3}
+  stageCompleteSound: {fileID: 8300000, guid: 125dc542e3e934db4862e5a51f1a1402, type: 3}

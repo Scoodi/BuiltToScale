@@ -21,7 +21,7 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private bool isFirstLevel = true;
     //TODO add reference to inventory
 
-    [SerializeField] private AudioClip stageCompleteSound;
+
 
     private void Awake()
     {
@@ -99,7 +99,6 @@ public class LevelScript : MonoBehaviour
         if (currentLevel != null)
         {
             fadeInOutOverlay.DOFade(1, fadeInOutTime);
-            SoundManager.Instance.PlaySFXClip(stageCompleteSound, Camera.main.transform);
             yield return new WaitForSeconds(fadeInOutTime);
         }
         PlatformerCharacterScript.Instance.loading = true;
