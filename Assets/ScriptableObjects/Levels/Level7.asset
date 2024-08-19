@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80147ae8e61cc71449dd798ca649e66d, type: 3}
+  m_Name: Level7
+  m_EditorClassIdentifier: 
+  levelNumber: 5
+  levelPrefab: {fileID: 5645313134014334938, guid: d599762bc6169ca4faba1fd156955dba, type: 3}
+  cameraSize: 10
+  Easy:
+  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
+  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
+  - {fileID: 8580225913947821665, guid: 562a3d45ff9cb884c9db766789be24cf, type: 3}
+  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  Medium:
+  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
+  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
+  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
+  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
+  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
+  Hard:
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  nextLevel: {fileID: 0}
+  levelMusic: {fileID: 0}
+  playerSpawnPos: {x: -12.6, y: -8}
+  playerSpawnFacingRight: 1
