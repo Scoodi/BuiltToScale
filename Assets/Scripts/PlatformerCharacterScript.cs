@@ -128,9 +128,11 @@ public class PlatformerCharacterScript : MonoBehaviour
         {
             Move();
         }
+        Debug.Log("OnGround: " + onGround + " " + Time.deltaTime + " Time in Air live: " + timeInAir);
         if (!onGround)
         {
             timeInAir += Time.deltaTime;
+
         }
         UpdateAnimatorVars();
     }
@@ -254,6 +256,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         else if (!onGround)
         {
             timeJumpPressed = timeInAir;
+            Debug.Log(timeInAir);
         }
     }
     public void OnLeaveGround (Transform platform = null) {
@@ -286,9 +289,9 @@ public class PlatformerCharacterScript : MonoBehaviour
         onGround = true;
         jumping = false;
         endingJump = false;
-        if (timeJumpPressed > 0f && (timeInAir - timeJumpPressed <= jumpBuffer)) {
+        /*if (timeJumpPressed > 0f && (timeInAir - timeJumpPressed <= jumpBuffer)) {
          Jump();   
-        }
+        }*/
         timeInAir = 0;
         // Plays landing sfx
         SoundManager.Instance.PlaySFXClip(landSfx, Camera.main.transform);
