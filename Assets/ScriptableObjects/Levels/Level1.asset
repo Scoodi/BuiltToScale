@@ -14,26 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 1
   levelPrefab: {fileID: 9088991615825046861, guid: c45dbfd5e3ea5ee4a98485ba5d3cf2aa, type: 3}
-  cameraSize: 5
+  cameraSize: 10
   Easy:
-  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
-  - {fileID: 8580225913947821665, guid: 562a3d45ff9cb884c9db766789be24cf, type: 3}
-  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
+  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
-  - {fileID: 8580225913947821665, guid: 7faad278047c6214289559fdacfeb8d2, type: 3}
-  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
   Medium:
-  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
-  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
-  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
-  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
+  - {fileID: 8580225913947821665, guid: a4492d08567df9b46b9f9b9e88ec79f2, type: 3}
+  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   Hard:
-  - {fileID: 8580225913947821665, guid: 7faad278047c6214289559fdacfeb8d2, type: 3}
-  - {fileID: 8580225913947821665, guid: 562a3d45ff9cb884c9db766789be24cf, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
-  nextLevel: {fileID: 11400000, guid: 2de5a80f7e980964ab7aecf18211a019, type: 2}
-  levelMusic: {fileID: 8300000, guid: f056879e302f448d9bdf950ea1aa10d4, type: 3}
-  playerSpawnPos: {x: -6.71, y: -3.29}
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  playerSpawnPos: {x: -10, y: -7.79}
   playerSpawnFacingRight: 1

@@ -12,25 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80147ae8e61cc71449dd798ca649e66d, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  levelNumber: 1
-  levelPrefab: {fileID: 9088991615825046861, guid: c45dbfd5e3ea5ee4a98485ba5d3cf2aa, type: 3}
-  cameraSize: 5
+  levelNumber: 2
+  levelPrefab: {fileID: 3027793507343829107, guid: b5afe1b453056d748955caf06b475d2f, type: 3}
+  cameraSize: 9
   Easy:
-  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
-  - {fileID: 8580225913947821665, guid: 562a3d45ff9cb884c9db766789be24cf, type: 3}
-  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
+  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   Medium:
-  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
-  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
-  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
-  - {fileID: 8580225913947821665, guid: ff6d8d54e6d55174599b7ef3f43a52df, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
+  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
+  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   Hard:
-  - {fileID: 8580225913947821665, guid: 7faad278047c6214289559fdacfeb8d2, type: 3}
-  - {fileID: 8580225913947821665, guid: 562a3d45ff9cb884c9db766789be24cf, type: 3}
-  - {fileID: 8580225913947821665, guid: 80c89c0ddf155984496b5bd072e19d80, type: 3}
-  nextLevel: {fileID: 11400000, guid: 7e56b5c30a897134d865a282bf81db9a, type: 2}
-  levelMusic: {fileID: 8300000, guid: d688622be67294c238b2b6739f810e76, type: 3}
-  playerSpawnPos: {x: -6.71, y: -3.29}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  playerSpawnPos: {x: -10, y: -6.9}
   playerSpawnFacingRight: 1
