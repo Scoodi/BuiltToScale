@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 538.04, y: 223.57}
+  m_SizeDelta: {x: 0, y: 223.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4159652217350995731
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: Super long text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f24ae6384789749d79cff422aad11383, type: 2}
   m_sharedMaterial: {fileID: -2720001126702112889, guid: f24ae6384789749d79cff422aad11383, type: 2}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2670453501642755236}
   - component: {fileID: 4624668455435322762}
   m_Layer: 5
-  m_Name: PageTitleContainer
+  m_Name: Prefab_PageTitleContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
