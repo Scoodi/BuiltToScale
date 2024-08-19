@@ -327,6 +327,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
+      propertyPath: climbingSfx.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
       propertyPath: walkingSfx.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 167d5798058e4b9418e81feba73a267e, type: 3}
@@ -342,6 +346,22 @@ PrefabInstance:
       propertyPath: walkingSfx.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 83e842e509b894344924cc19d0f691f3, type: 3}
+    - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
+      propertyPath: climbingSfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 602972309da8d49dda359aff7112cd75, type: 3}
+    - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
+      propertyPath: climbingSfx.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 542389d0ab79d4b5ba99d64660d3f482, type: 3}
+    - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
+      propertyPath: climbingSfx.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 755c9fdf0b4d0424ca7e53a673499ef8, type: 3}
+    - target: {fileID: 5777322296255319688, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
+      propertyPath: climbingSfx.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fb10ef7b2d3c48a1a5bb4dba142f267, type: 3}
     - target: {fileID: 8226313358303302953, guid: 7b40bc0e94385e94bb638d7bc27be249, type: 3}
       propertyPath: m_Name
       value: Player

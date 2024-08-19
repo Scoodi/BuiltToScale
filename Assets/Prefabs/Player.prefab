@@ -520,11 +520,8 @@ MonoBehaviour:
   feet: {fileID: 5474960853297047655}
   grabCollider: {fileID: 6525580534779251869}
   playerAnim: {fileID: 0}
-  playerAudio: {fileID: 1113002798725664724}
   playerSpriteRend: {fileID: 1741200012373030509}
-  playerOneShotAudio: {fileID: 7659089720196080032}
   level: {fileID: 0}
-  debugStaminaText: {fileID: 0}
   staminaMask: {fileID: 0}
   staminaDisplay: {fileID: 0}
   inventoryDisplay: {fileID: 0}
@@ -618,6 +615,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  pauseAction:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ca2608f4-d0bc-4c4d-9888-be89c137a4e1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   jumpForce: 7
   downForce: 2
   moveSpeed: 4
@@ -639,9 +645,20 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  walkingSfx:
+  - {fileID: 8300000, guid: 167d5798058e4b9418e81feba73a267e, type: 3}
+  - {fileID: 8300000, guid: 1af689062041cb44ea63baccaacc0d0a, type: 3}
+  - {fileID: 8300000, guid: ca19e68738872dc419a30fdbe218964a, type: 3}
+  - {fileID: 8300000, guid: 83e842e509b894344924cc19d0f691f3, type: 3}
+  climbingSfx:
+  - {fileID: 8300000, guid: 602972309da8d49dda359aff7112cd75, type: 3}
+  - {fileID: 8300000, guid: 542389d0ab79d4b5ba99d64660d3f482, type: 3}
+  - {fileID: 8300000, guid: 755c9fdf0b4d0424ca7e53a673499ef8, type: 3}
+  - {fileID: 8300000, guid: 0fb10ef7b2d3c48a1a5bb4dba142f267, type: 3}
   jumpSfx:
-  - {fileID: 8300000, guid: e43cf77872f481344a46e347f1b4da2c, type: 3}
-  landSfx: {fileID: 8300000, guid: aca54e32a1404894f9db76fc91032346, type: 3}
+  - {fileID: 8300000, guid: 9d89d9d95f059448abf1f00947f227e3, type: 3}
+  - {fileID: 8300000, guid: e1109f1c4a4e04d7ebe18092c2a97e08, type: 3}
+  landSfx: {fileID: 8300000, guid: d3c21c5fe4c5c4eecb2b15f9f5346fc9, type: 3}
 --- !u!50 &5073099514953607269
 Rigidbody2D:
   serializedVersion: 4

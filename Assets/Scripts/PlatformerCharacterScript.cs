@@ -66,7 +66,8 @@ public class PlatformerCharacterScript : MonoBehaviour
     public ContactFilter2D grabContactFilter;
 
     [Header("Sound Effects")]
-    [SerializeField] private AudioClip[] walkingSfx; 
+    [SerializeField] private AudioClip[] walkingSfx;
+    [SerializeField] private AudioClip[] climbingSfx;
     [SerializeField] private AudioClip[] jumpSfx;
     [SerializeField] private AudioClip landSfx;
     void Awake()
@@ -271,6 +272,13 @@ public class PlatformerCharacterScript : MonoBehaviour
         yield return new WaitForSeconds(toPlay.length);
         walkingSoundIsPlaying = false;
     }
+    IEnumerator PlayClimbingSound()
+    {
+        AudioClip toPlay = climbingSfx[Random.Range(0, walkingSfx.Length - 1)];
+        SoundManager.Instance.PlaySFXClip(toPlay, Camera.main.transform);
+        yield return new WaitForSeconds(toPlay.length);
+        walkingSoundIsPlaying = false;
+    }
 
     public void OnEnterGround(Transform platform = null) {
         onGround = true;
@@ -309,7 +317,7 @@ public class PlatformerCharacterScript : MonoBehaviour
             if (!walkingSoundIsPlaying && climbing)
             {
                 walkingSoundIsPlaying = true;
-                StartCoroutine(PlayWalkingSound());
+                StartCoroutine(PlayClimbingSound());
             }
             rb.velocity = new Vector2(horizontalMove * moveSpeed, verticalMove * moveSpeed);
         }
