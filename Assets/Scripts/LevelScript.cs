@@ -15,6 +15,7 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Image fadeInOutOverlay;
     [SerializeField] private float fadeInOutTime = 1f;
     [SerializeField] private Camera levelCamera;
+    [SerializeField] private GameObject pauseMenu;
     public bool gamePaused = false;
 
     [SerializeField] private bool isFirstLevel = true;
@@ -148,5 +149,6 @@ public class LevelScript : MonoBehaviour
             Time.timeScale = 0f;
             gamePaused = true;
         }
+        pauseMenu.SetActive(gamePaused);
     }
 }
