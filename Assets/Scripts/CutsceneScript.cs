@@ -44,18 +44,25 @@ public class CutsceneScript : MonoBehaviour
     {
         nameDisplay.text = dialogueToLoad.SpeakerName;
         speechDisplay.text = dialogueToLoad.SpeakerText;
+        if (dialogueToLoad.audio != null)
+        {
+            SoundManager.Instance.PlaySFXClip(dialogueToLoad.audio, Camera.main.transform);
+        }
     }
 
     void AdvanceDialogue ()
     {
-        if (currentDialogue < dialogueSOs.Length - 1)
+        if (SceneManager.GetActiveScene().name.Contains("Cutscene"))
         {
-            currentDialogue++;
-            LoadDialogue(dialogueSOs[currentDialogue]);
-        } else
-        {
-            SceneManager.LoadScene(nextLevel);
+            if (currentDialogue < dialogueSOs.Length - 1)
+            {
+                currentDialogue++;
+                LoadDialogue(dialogueSOs[currentDialogue]);
+            }
+            else
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
         }
-
     }
 }

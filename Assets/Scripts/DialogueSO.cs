@@ -7,4 +7,5 @@ public class DialogueSO : ScriptableObject
 {
     public string SpeakerName = "Keith";
     public string SpeakerText = "Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez Deez";
+    public AudioClip audio;
 }

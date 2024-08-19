@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: Bekka
   SpeakerText: Time for another day of deliveries!
+  audio: {fileID: 8300000, guid: 7ec6729fe0e684bd48d31b717a512d2c, type: 3}
