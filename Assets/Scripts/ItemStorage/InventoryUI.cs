@@ -105,14 +105,14 @@ public class InventoryUI : MonoBehaviour
         int count = 0;
 
         RectTransform UISize = GetComponent<RectTransform>();
-        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((blockSlotCellSize * 1.1f) * inventory.GetLoadedBlocks().Count + 1));
+        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((-yPositionOffset/2f)+ (blockSlotCellSize * inventory.GetLoadedBlocks().Count + 1)));
 
         foreach(GameObject block in inventory.GetLoadedBlocks())
         {
             RectTransform blockSlotRectTransform = Instantiate(blockSlotTemplate, blockSlotContainer).GetComponent<RectTransform>();
             blockSlotRectTransform.gameObject.SetActive(true);
             blockSlotRectTransform.gameObject.name = count.ToString();
-            blockSlotRectTransform.anchoredPosition = new Vector2(75, -75 - (y * blockSlotCellSize));
+            blockSlotRectTransform.anchoredPosition = new Vector2(xPositionOffset, yPositionOffset - (y * blockSlotCellSize));
             buttonPositions.Add(blockSlotRectTransform);
             IsButtonActive.Add(true);
             Image image = blockSlotRectTransform.transform.Find("BlockButtonSlot").GetComponent<Image>();

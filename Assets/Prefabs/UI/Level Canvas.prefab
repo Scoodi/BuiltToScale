@@ -395,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2026732439454995065
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1303,9 +1303,12 @@ MonoBehaviour:
   isFirstLevel: 1
   isCheckingPieces: 0
   countdownText: {fileID: 8947949808134007256}
-  piecesNotSetSound: {fileID: 8300000, guid: 477e8202df21aee499d78c73a2ab1274, type: 3}
-  piecesSetSound: {fileID: 8300000, guid: 81e9def0bda484595949b3b794558278, type: 3}
-  countdownSound: {fileID: 8300000, guid: 116606c6f5c03423b8fd23a2f2dfad6b, type: 3}
+  piecesNotSetSound: {fileID: 8300000, guid: 0a7a3d5235adf42b981c4399527fc146, type: 3}
+  piecesSetSound: {fileID: 8300000, guid: 1ae1040fabb284a30be38e7fbb4406e7, type: 3}
+  countdownSound:
+  - {fileID: 8300000, guid: 0886ce1170e784cd2bc6760f3dfcee71, type: 3}
+  - {fileID: 8300000, guid: 7aed0cd2cd9804541a26aa02bb49ebc8, type: 3}
+  - {fileID: 8300000, guid: 5b3357d73a8cf419c80ea5b5ce0a9a84, type: 3}
 --- !u!114 &8030680240206280565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1565,10 @@ MonoBehaviour:
   buttonPositions: []
   IsButtonActive: 
   GamePadCursor: {fileID: 9016675743943130908}
+  blockSlotCellSize: 150
+  menuBottomPadding: 0
+  xPositionOffset: 75
+  yPositionOffset: -75
   placeBlockSound: {fileID: 8300000, guid: 9d86d59d810c24f06b6abdf748ba5d0b, type: 3}
   selectBlockSound: {fileID: 8300000, guid: f20ba65dd62234a10829acb9e101944d, type: 3}
 --- !u!1 &8742645131585356998

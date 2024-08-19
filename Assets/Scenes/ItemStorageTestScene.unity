@@ -695,6 +695,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2967619176250728087, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: levelCamera
       value: 
@@ -719,6 +723,14 @@ PrefabInstance:
       propertyPath: countdownSound.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 5b3357d73a8cf419c80ea5b5ce0a9a84, type: 3}
+    - target: {fileID: 5343014567900548916, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: yPositionOffset
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343014567900548916, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: blockSlotCellSize
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 6411351130484049359, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
