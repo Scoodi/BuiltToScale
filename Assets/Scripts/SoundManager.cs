@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip testClipThree;
 
     [SerializeField] private bool isMainMenu = false;
+    private float masterVolume;
     private float sfxVolume;
     private float musicVolume;
 
@@ -74,16 +75,29 @@ public class SoundManager : MonoBehaviour
     // Jammin Jammin!
     public void SetMusicVolume(float vol)
     {
-        musicSourceOne.volume = vol;
-        musicSourceTwo.volume = vol;
-        musicVolume = vol;
+        float volumeToSet = vol * GetMasterVolume();
+        musicSourceOne.volume = volumeToSet;
+        musicSourceTwo.volume = volumeToSet;
+        musicVolume = volumeToSet;
     }
 
     public void SetSfxVolume(float vol)
     {
-        sfxVolume = vol;
-        soundFXObject.volume = vol;
+        float volumeToSet = vol * GetMasterVolume();
+        sfxVolume = volumeToSet;
+        soundFXObject.volume = volumeToSet;
         // set the sfxSource volume in PP
+    }
+
+    public void SetMasterVolume(float vol)
+    {
+        masterVolume = vol;
+        // set the sfxSource volume in PP
+    }
+
+    public float GetMasterVolume()
+    {
+        return masterVolume;
     }
 
     public float GetMusicVolume()

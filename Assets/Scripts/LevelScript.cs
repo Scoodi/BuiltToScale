@@ -83,11 +83,13 @@ public class LevelScript : MonoBehaviour
                 countdownText.DOFade(0, 3f);
                 settled = false; break;
             }
-            else
-            {
-                SoundManager.Instance.PlaySFXClip(countdownSound, Camera.main.transform);
-            }
         }
+        if(settled)
+        {
+            SoundManager.Instance.PlaySFXClip(countdownSound, Camera.main.transform);
+        }    
+            
+
         return settled;
     }
 
@@ -169,7 +171,7 @@ public class LevelScript : MonoBehaviour
         InventoryUI.Instance.ReloadInventoryBlocks();
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (gamePaused)
         {

@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class PlatformerCharacterScript : MonoBehaviour
@@ -18,9 +19,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private GroundDetector feet;
     [SerializeField] private Collider2D grabCollider;
     [SerializeField] private Animator playerAnim;
-    [SerializeField] private AudioSource playerAudio;
     [SerializeField] private SpriteRenderer playerSpriteRend;
-    [SerializeField] private AudioSource playerOneShotAudio;
     [SerializeField] private LevelScript level;
 
     [Header("UI Elements")]
@@ -66,6 +65,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     public ContactFilter2D grabContactFilter;
 
     [Header("Sound Effects")]
+    [SerializeField] private AudioClip[] walkingSfx; 
     [SerializeField] private AudioClip[] jumpSfx;
     [SerializeField] private AudioClip landSfx;
     void Awake()
@@ -127,14 +127,6 @@ public class PlatformerCharacterScript : MonoBehaviour
         if (horizontalMove != 0)
         {
             Move();
-        }
-        if (horizontalMove != 0 || verticalMove != 0)
-        {
-            
-        }
-        else if (playerAudio.isPlaying)
-        {
-            playerAudio.Pause();
         }
         if (!onGround)
         {
@@ -252,7 +244,8 @@ public class PlatformerCharacterScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumping = true;
             timeJumpPressed = 0f;
-            playerOneShotAudio.PlayOneShot(jumpSfx[Random.Range(0, jumpSfx.Length)]);
+            // Plays jump sfx
+            SoundManager.Instance.PlaySFXClip(jumpSfx[Random.Range(0, jumpSfx.Length - 1)], Camera.main.transform);
         }
         else if (!onGround)
         {
@@ -261,7 +254,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
     public void OnLeaveGround (Transform platform = null) {
         onGround = false;
-        playerAudio.Pause();
+        // stop walking sound
         if (platform) {
             if (platform == currentPlatform) {
                 currentPlatform = null;
@@ -269,6 +262,14 @@ public class PlatformerCharacterScript : MonoBehaviour
             }
         }
     }
+
+    IEnumerator PlayWalkingSound()
+    {
+        if(onGround)
+
+        yield return new WaitForSeconds(0f);
+    }
+
     public void OnEnterGround(Transform platform = null) {
         onGround = true;
         jumping = false;
@@ -277,7 +278,8 @@ public class PlatformerCharacterScript : MonoBehaviour
          Jump();   
         }
         timeInAir = 0;
-        playerOneShotAudio.PlayOneShot(landSfx);
+        // Plays landing sfx
+        SoundManager.Instance.PlaySFXClip(landSfx, Camera.main.transform);
         if (platform) {
            currentPlatform = platform;
            transform.parent = platform;
@@ -287,10 +289,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         rb.AddForce(Vector2.down * downForce, ForceMode2D.Impulse);
     }
     void Move () {
-        if (!playerAudio.isPlaying && onGround)
-        {
-            playerAudio.Play();
-        }
+        
         if (!climbing)
         {
             rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
