@@ -30,7 +30,6 @@ public class PlatformerCharacterScript : MonoBehaviour
     //Private Movement Vars
     private float horizontalMove = 0;
     private float verticalMove = 0;
-    private bool facingRight = true;
     private bool climbing = false;
     private bool onGround;
     private bool jumping;
@@ -92,7 +91,6 @@ public class PlatformerCharacterScript : MonoBehaviour
         currentStamina = maxStaminaSeconds;
         rb.velocity = Vector2.zero;
         transform.position = pos;
-        facingRight = rightFacing;
     }
 
     private void InitialiseInputActions()
@@ -168,7 +166,8 @@ public class PlatformerCharacterScript : MonoBehaviour
 
     }
     void UpdateAnimatorVars () {
-        playerAnim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        playerAnim.SetFloat("WalkXVel", rb.velocity.x);
+        playerAnim.SetBool("Walking", (onGround));
 
     }
     void Climb()
@@ -308,10 +307,6 @@ public class PlatformerCharacterScript : MonoBehaviour
                 StartCoroutine(PlayWalkingSound());
             }
             rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
-            if ((horizontalMove < 0 && facingRight) || (horizontalMove > 0 && !facingRight))
-            {
-                Flip();
-            }
         } else
         {
             if (!walkingSoundIsPlaying && climbing)
@@ -329,13 +324,6 @@ public class PlatformerCharacterScript : MonoBehaviour
         building = buildMode;
         inventoryDisplay.SetActive(buildMode);
         staminaDisplay.SetActive(!buildMode);
-    }
-
-    void Flip() {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
     }
 
     IEnumerator SetInactiveAfterTime (float time, GameObject obj)
