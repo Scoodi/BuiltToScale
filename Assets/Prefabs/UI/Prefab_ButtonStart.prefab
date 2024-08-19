@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5081852913795704934}
   - component: {fileID: 4282149445039779420}
   - component: {fileID: 7947677078117659370}
+  - component: {fileID: 3665448765473491660}
   m_Layer: 5
   m_Name: Prefab_ButtonStart
   m_TagString: Untagged
@@ -328,3 +329,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 69d372b576e89406093f36252041abcd, type: 3}
   - {fileID: 8300000, guid: 116606c6f5c03423b8fd23a2f2dfad6b, type: 3}
   pressAudio: {fileID: 8300000, guid: 088334bfea7a349abbbb74f2a418557f, type: 3}
+--- !u!114 &3665448765473491660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150192413457933225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: -2, y: -2}
+  m_UseGraphicAlpha: 1
