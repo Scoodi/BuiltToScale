@@ -132,7 +132,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         {
             timeInAir += Time.deltaTime;
         }
-        //UpdateAnimatorVars();
+        UpdateAnimatorVars();
     }
     public void LoadProgress()
     {
@@ -166,9 +166,12 @@ public class PlatformerCharacterScript : MonoBehaviour
 
     }
     void UpdateAnimatorVars () {
+        playerAnim.SetBool("OnGround", onGround);
         playerAnim.SetFloat("WalkXVel", rb.velocity.x);
-        playerAnim.SetBool("Walking", (onGround));
-
+        playerAnim.SetBool("Climbing", climbing);
+        playerAnim.SetFloat("VelMag", rb.velocity.magnitude);
+        playerAnim.SetFloat("Stamina", currentStamina);
+        //May need to scale magnitude
     }
     void Climb()
     {
@@ -245,7 +248,7 @@ public class PlatformerCharacterScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumping = true;
             timeJumpPressed = 0f;
-            // Plays jump sfx
+            playerAnim.SetTrigger("Jump");
             SoundManager.Instance.PlaySFXClip(jumpSfx[Random.Range(0, jumpSfx.Length - 1)], Camera.main.transform);
         }
         else if (!onGround)
