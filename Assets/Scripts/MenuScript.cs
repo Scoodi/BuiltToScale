@@ -7,16 +7,15 @@ public class MenuScript : MonoBehaviour
 {
     public enum MenuScreens
     {
-        Options,
         Tutorial,
         Settings,
-        Credits
+        Credits,
+        Difficulty,
+        LevelSelect
     }
     [SerializeField] private GameObject currentScreen;
 
-    [SerializeField] private GameObject tutorialScreen;
-    [SerializeField] private GameObject settingsScreen;
-    [SerializeField] private GameObject creditsScreen;
+    [SerializeField] private GameObject[] screens;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +27,20 @@ public class MenuScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SwitchToMenu (string menu)
+    {
+        for (int i = 0; i < screens.Length-1; i++)
+        {
+            if (((MenuScreens)i).ToString() != menu)
+            {
+                screens[i].SetActive(false);
+            } else
+            {
+                screens[i].SetActive(true);
+            }
+        }
     }
 
     public void StartGame ()
