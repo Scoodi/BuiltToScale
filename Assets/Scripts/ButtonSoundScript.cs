@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSoundScript : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class ButtonSoundScript : MonoBehaviour
 
     public void PlaySelectSound()
     {
-        SoundManager.Instance.PlaySFXClip(selectAudio[Random.Range(0,selectAudio.Length-1)], Camera.main.transform);
+        if(gameObject.GetComponent<Button>().interactable)
+        {
+            SoundManager.Instance.PlaySFXClip(selectAudio[Random.Range(0, selectAudio.Length - 1)], Camera.main.transform);
+        }
     }
 
     public void PlayPressSound()

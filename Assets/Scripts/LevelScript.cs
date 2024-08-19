@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
+using TMPro;
 
 public class LevelScript : MonoBehaviour
 {
@@ -19,7 +20,15 @@ public class LevelScript : MonoBehaviour
     public bool gamePaused = false;
 
     [SerializeField] private bool isFirstLevel = true;
+    [SerializeField] private bool isCheckingPieces = false;
     //TODO add reference to inventory
+
+    [SerializeField] private TMP_Text countdownText;
+
+    [Header("AudioClips")]
+    [SerializeField] private AudioClip piecesNotSetSound;
+    [SerializeField] private AudioClip piecesSetSound;
+    [SerializeField] private AudioClip countdownSound;
 
 
 
@@ -47,46 +56,69 @@ public class LevelScript : MonoBehaviour
         InventoryUI.Instance.inventory.LoadBlocks();
 
     }
-    public void TryGoToPlatforming ()
+    public void TryGoToPlatforming()
     {
         if (PlatformerCharacterScript.Instance.building)
         {
             StartCoroutine("SettleCountdown");
-        } else
+        }
+        else
         {
             Debug.Log("Restart level to rebuild");
         };
     }
 
-    bool CheckIfSettled ()
+    bool CheckIfSettled()
     {
         bool settled = true;
         foreach (Rigidbody2D rb in InventoryUI.Instance.placedRBs)
         {
             if (rb.velocity.magnitude > maxVelocity)
             {
+                isCheckingPieces = false;
                 Debug.Log("Pieces not settled!");
+                countdownText.color = Color.red;
+                countdownText.text = "Pieces not settled!";
+                SoundManager.Instance.PlaySFXClip(piecesNotSetSound, Camera.main.transform);
+                countdownText.DOFade(0, 3f);
                 settled = false; break;
+            }
+            else
+            {
+                SoundManager.Instance.PlaySFXClip(countdownSound, Camera.main.transform);
             }
         }
         return settled;
     }
 
-    IEnumerator SettleCountdown ()
+    IEnumerator SettleCountdown()
     {
-        for (int i = 0; i < 3; i++)
+        if (!isCheckingPieces)
         {
-            if (!CheckIfSettled())
+            isCheckingPieces = true;
+            for (int i = 0; i < 3; i++)
             {
-                StopCoroutine("SettleCountdown");
+                countdownText.color = Color.white;
+                countdownText.DOKill();
+                countdownText.text = (3 - i).ToString();
+                if (!CheckIfSettled())
+                {
+                    StopCoroutine("SettleCountdown");
+                }
+                Debug.Log("Waited " + i + " seconds");
+                yield return new WaitForSeconds(1f);
             }
-            Debug.Log("Waited " + i + " seconds");
-            yield return new WaitForSeconds(1f);
+            InventoryUI.Instance.DestroyCurrentBlock();
+            InventoryUI.Instance.HideGamepadCursor();
+            PlatformerCharacterScript.Instance.SwapMode();
+            SoundManager.Instance.PlaySFXClip(piecesSetSound, Camera.main.transform);
+            countdownText.color = Color.green;
+            countdownText.text = "Pieces Settled!";
+            countdownText.DOFade(0, 3f);
+
+            Debug.Log("Settled");
+            isCheckingPieces = false;
         }
-        InventoryUI.Instance.DestroyCurrentBlock();
-        InventoryUI.Instance.HideGamepadCursor();
-        PlatformerCharacterScript.Instance.SwapMode();
-        Debug.Log("Settled");
     }
 
     public void LevelCompleted(LevelSO nextLevel)
@@ -103,7 +135,7 @@ public class LevelScript : MonoBehaviour
         }
         PlatformerCharacterScript.Instance.loading = true;
         LoadLevel(nextLevel);
-        if(isFirstLevel)
+        if (isFirstLevel)
         {
             SoundManager.Instance.InitialiseMusic();
             isFirstLevel = false;
@@ -143,7 +175,8 @@ public class LevelScript : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             gamePaused = false;
-        } else
+        }
+        else
         {
             Time.timeScale = 0f;
             gamePaused = true;

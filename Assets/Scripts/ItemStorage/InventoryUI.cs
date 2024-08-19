@@ -29,6 +29,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image GamePadCursor;
     private int currentGamepadPos = 0;
 
+    [Header("Audio Clips")]
+    public AudioClip placeBlockSound;
+    public AudioClip selectBlockSound;
+
     private void Awake()
     {
         
@@ -157,6 +161,7 @@ public class InventoryUI : MonoBehaviour
             {
                 // allow move up
                 GamePadCursor.transform.position = buttonPositions[currentGamepadPos - 1].position;
+                SoundManager.Instance.PlaySFXClip(selectBlockSound, GamePadCursor.transform);
                 currentGamepadPos--;
                 DestroyCurrentBlock();
                 OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
@@ -174,6 +179,7 @@ public class InventoryUI : MonoBehaviour
             {
                 // allow move down
                 GamePadCursor.transform.position = buttonPositions[currentGamepadPos + 1].position;
+                SoundManager.Instance.PlaySFXClip(selectBlockSound, GamePadCursor.transform);
                 currentGamepadPos++;
                 DestroyCurrentBlock();
                 OnClickSpawnObject(buttonPositions[currentGamepadPos].gameObject);
@@ -202,6 +208,7 @@ public class InventoryUI : MonoBehaviour
                 {
                     col.isTrigger = false;
                 }
+                SoundManager.Instance.PlaySFXClip(placeBlockSound, currentBlock.transform);
                 placedRBs.Add(currentBlock.GetComponent<Rigidbody2D>());
                 buttonPositions[currentGamepadPos].GetComponentInChildren<Button>().interactable = false;
                 IsButtonActive[currentGamepadPos] = false;

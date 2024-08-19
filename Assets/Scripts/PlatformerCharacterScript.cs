@@ -24,7 +24,6 @@ public class PlatformerCharacterScript : MonoBehaviour
     [SerializeField] private LevelScript level;
 
     [Header("UI Elements")]
-    [SerializeField] private TMP_Text debugStaminaText;
     [SerializeField] private RectMask2D staminaMask;
     [SerializeField] private GameObject staminaDisplay;
     [SerializeField] private GameObject inventoryDisplay;
@@ -236,7 +235,7 @@ public class PlatformerCharacterScript : MonoBehaviour
             currentStamina = 3f;
         }
         UpdateUI();
-        debugStaminaText.text = currentStamina.ToString();
+        
     }
     void CheckForClimbable()
     {
