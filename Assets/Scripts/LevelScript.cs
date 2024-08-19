@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class LevelScript : MonoBehaviour
 {
@@ -14,7 +15,13 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Image fadeInOutOverlay;
     [SerializeField] private float fadeInOutTime = 1f;
     [SerializeField] private Camera levelCamera;
+    [SerializeField] private GameObject pauseMenu;
+    public bool gamePaused = false;
+
+    [SerializeField] private bool isFirstLevel = true;
     //TODO add reference to inventory
+
+    [SerializeField] private AudioClip stageCompleteSound;
 
     private void Awake()
     {
@@ -26,15 +33,19 @@ public class LevelScript : MonoBehaviour
         {
             Instance = this;
         }
-
-        if (currentLevel == null)
-        {
-            LevelCompleted(firstLevel);
-        }
     }
+
     private void Start()
     {
         PlatformerCharacterScript.Instance.swapModeAction.performed += _ => TryGoToPlatforming();
+        PlatformerCharacterScript.Instance.pauseAction.performed += _ => PauseGame();
+        if (isFirstLevel)
+        {
+            LevelCompleted(firstLevel);
+        }
+        SoundManager.Instance.InitialiseMusic();
+        InventoryUI.Instance.inventory.LoadBlocks();
+
     }
     public void TryGoToPlatforming ()
     {
@@ -88,10 +99,20 @@ public class LevelScript : MonoBehaviour
         if (currentLevel != null)
         {
             fadeInOutOverlay.DOFade(1, fadeInOutTime);
+            SoundManager.Instance.PlaySFXClip(stageCompleteSound, Camera.main.transform);
             yield return new WaitForSeconds(fadeInOutTime);
         }
         PlatformerCharacterScript.Instance.loading = true;
         LoadLevel(nextLevel);
+        if(isFirstLevel)
+        {
+            SoundManager.Instance.InitialiseMusic();
+            isFirstLevel = false;
+        }
+        else
+        {
+            SoundManager.Instance.ChangeMusicOnLevelChange();
+        }
         fadeInOutOverlay.DOFade(0, fadeInOutTime);
         yield return new WaitForSeconds(fadeInOutTime);
         PlatformerCharacterScript.Instance.loading = false;
@@ -115,5 +136,19 @@ public class LevelScript : MonoBehaviour
         PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos, levelToLoad.playerSpawnFacingRight);
         currentLevel = levelToLoad;
         InventoryUI.Instance.ReloadInventoryBlocks();
+    }
+
+    void PauseGame()
+    {
+        if (gamePaused)
+        {
+            Time.timeScale = 1.0f;
+            gamePaused = false;
+        } else
+        {
+            Time.timeScale = 0f;
+            gamePaused = true;
+        }
+        pauseMenu.SetActive(gamePaused);
     }
 }

@@ -7,7 +7,6 @@ public class LevelEnd : MonoBehaviour
 {
     [SerializeField] private bool cutSceneNext = false;
     [SerializeField] private string cutsceneName;
-    [SerializeField] private LevelSO nextLevel;
     void Start()
     {
         
@@ -29,7 +28,7 @@ public class LevelEnd : MonoBehaviour
                 SceneManager.LoadScene(cutsceneName);
             } else
             {
-                LevelScript.Instance.LevelCompleted(nextLevel);
+                LevelScript.Instance.LevelCompleted(LevelScript.Instance.currentLevel.nextLevel);
             }
 
         }

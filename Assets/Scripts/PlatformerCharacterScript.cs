@@ -54,6 +54,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     public InputAction cursorUpAction;
     public InputAction cursorDownAction;
     public InputAction cancelAction;
+    public InputAction pauseAction;
 
     [Header("Movement Vars")]
     [SerializeField] private float jumpForce = 7f;
@@ -104,6 +105,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         swapModeAction = actions.FindActionMap("Platforming").FindAction("Swap Mode");
         cursorUpAction = actions.FindActionMap("Platforming").FindAction("CursorUp");
         cursorDownAction = actions.FindActionMap("Platforming").FindAction("CursorDown");
+        pauseAction = actions.FindActionMap("Platforming").FindAction("Pause");
         rotateAction = actions.FindActionMap("Platforming").FindAction("Rotate");
         jumpAction.performed += _ => Jump();
         climbAction = actions.FindActionMap("Platforming").FindAction("Climb");
@@ -113,7 +115,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!building && !loading)
+        if (!building && !loading && !LevelScript.Instance.gamePaused)
         {
             ProcessInput();
         }
@@ -178,19 +180,22 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
     void Climb()
     {
-        if (!building && !loading && !climbing && currentStamina > 0)
+        if (!LevelScript.Instance.gamePaused)
         {
-            List<Collider2D> overlapResults = new List<Collider2D>();
-            Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
-            if (overlapResults.Count > 0)
+            if (!building && !loading && !climbing && currentStamina > 0)
             {
-                EnableClimb();
-            }
+                List<Collider2D> overlapResults = new List<Collider2D>();
+                Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
+                if (overlapResults.Count > 0)
+                {
+                    EnableClimb();
+                }
 
-        }
-        else
-        {
-            DisableClimb();
+            }
+            else
+            {
+                DisableClimb();
+            }
         }
     }
 
@@ -243,7 +248,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         }
     }
     void Jump () {
-        if (timeInAir <= coyoteTime && !building && !loading)
+        if (timeInAir <= coyoteTime && !building && !loading && !LevelScript.Instance.gamePaused)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumping = true;

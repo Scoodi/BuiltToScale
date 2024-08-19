@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    [SerializeField] private GameObject tutorialScreen;
+    [SerializeField] private GameObject settingsScreen;
+    [SerializeField] private GameObject creditsScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +20,18 @@ public class MainMenuScript : MonoBehaviour
         
     }
 
-    public void LoadLevelOne ()
+    public void StartGame ()
     {
-        SceneManager.LoadScene("ItemStorageTestScene");
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
