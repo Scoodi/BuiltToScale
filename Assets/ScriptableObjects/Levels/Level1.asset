@@ -16,12 +16,14 @@ MonoBehaviour:
   levelPrefab: {fileID: 9088991615825046861, guid: c45dbfd5e3ea5ee4a98485ba5d3cf2aa, type: 3}
   cameraSize: 10
   Easy:
-  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   Medium:
   - {fileID: 8580225913947821665, guid: a4492d08567df9b46b9f9b9e88ec79f2, type: 3}
   - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   Hard:
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  nextLevel: {fileID: 0}
+  levelMusic: {fileID: 0}
   playerSpawnPos: {x: -10, y: -7.79}
   playerSpawnFacingRight: 1
