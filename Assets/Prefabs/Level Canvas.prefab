@@ -304,6 +304,7 @@ MonoBehaviour:
   testClipOne: {fileID: 8300000, guid: 477e8202df21aee499d78c73a2ab1274, type: 3}
   testClipTwo: {fileID: 8300000, guid: 167d5798058e4b9418e81feba73a267e, type: 3}
   testClipThree: {fileID: 8300000, guid: 77f758217e56b8a4db71ea30d9ed034d, type: 3}
+  isMainMenu: 0
 --- !u!1 &1541473858177778341
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +317,7 @@ GameObject:
   - component: {fileID: 7215571188154504207}
   - component: {fileID: 664301272256582354}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FadeInOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,10 +337,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6411351130484049359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 1100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7215571188154504207
 CanvasRenderer:
