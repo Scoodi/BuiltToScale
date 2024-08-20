@@ -286,18 +286,24 @@ public class PlatformerCharacterScript : MonoBehaviour
     }
 
     public void OnEnterGround(Transform platform = null) {
-        onGround = true;
-        jumping = false;
-        endingJump = false;
-        /*if (timeJumpPressed > 0f && (timeInAir - timeJumpPressed <= jumpBuffer)) {
-         Jump();   
-        }*/
-        timeInAir = 0;
-        // Plays landing sfx
-        SoundManager.Instance.PlaySFXClip(landSfx, Camera.main.transform);
-        if (platform) {
-           currentPlatform = platform;
-           transform.parent = platform;
+        if (!onGround)
+        {
+            onGround = true;
+            jumping = false;
+            endingJump = false;
+            if (timeJumpPressed > 0f && (timeInAir - timeJumpPressed <= jumpBuffer))
+            {
+                timeInAir = 0;
+                Jump();
+            }
+            timeInAir = 0;
+            // Plays landing sfx
+            SoundManager.Instance.PlaySFXClip(landSfx, Camera.main.transform);
+            if (platform)
+            {
+                currentPlatform = platform;
+                transform.parent = platform;
+            }
         }
     }
     void ApplyDownForce() {

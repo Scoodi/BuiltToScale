@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
+    [SerializeField] private Collider2D footTrigger;
     [SerializeField] private PlatformerCharacterScript keith;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,15 @@ public class GroundDetector : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Ground"))
         {
+            List<Collider2D> overlapResults = new List<Collider2D>();
+            Physics2D.OverlapCollider(footTrigger, new ContactFilter2D(), overlapResults);
+            foreach (Collider2D col2 in overlapResults)
+            {
+                if (col2.gameObject.CompareTag("Ground"))
+                {
+                    return;
+                }
+            }
             keith.OnLeaveGround();
         } else if (col.gameObject.CompareTag("Platform")) {
             keith.OnLeaveGround(col.gameObject.transform);
