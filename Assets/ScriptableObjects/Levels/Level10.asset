@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80147ae8e61cc71449dd798ca649e66d, type: 3}
+  m_Name: Level10
+  m_EditorClassIdentifier: 
+  levelNumber: 8
+  levelPrefab: {fileID: 4180519257336286582, guid: 90edf447defbc1a4d88e390d736db6cc, type: 3}
+  cameraSize: 10
+  Easy:
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  Medium: []
+  Hard: []
+  nextLevel: {fileID: 0}
+  nextCutscene: 
+  levelMusic: {fileID: 0}
+  playerSpawnPos: {x: -11, y: -8}
+  playerSpawnFacingRight: 1
