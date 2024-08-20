@@ -41,9 +41,9 @@ public class SoundManager : MonoBehaviour
 
     public void Start()
     {
-        //SetMasterVolume(1.0f);
-        //SetMusicVolume(0.6f);
-        //SetSfxVolume(1.0f);
+        SetMasterVolume(PlayerPrefs.GetFloat("MasterVolume"));
+        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume"));
+        SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume"));
     }
 
     public void Update()
