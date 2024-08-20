@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Inventory;
@@ -20,6 +21,8 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private GameObject[] screens;
 
     [SerializeField] private string[] stageIntroCutscenes;
+    public InputActionAsset actions;
+    private InputAction backAction;
 
     [Header("Settings Sliders")]
     [SerializeField] private Slider masterVolumeSlider;
@@ -31,9 +34,14 @@ public class MenuScript : MonoBehaviour
         InitialisePlayerPrefs();
     }
 
+
+
     private void Start()
     {
         InitialiseSliders();
+        actions.FindActionMap("Platforming").Enable();
+        backAction = actions.FindActionMap("Platforming").FindAction("Cancel");
+        backAction.performed += _ => ClearMenus();
     }
 
     void InitialisePlayerPrefs()
@@ -122,6 +130,14 @@ public class MenuScript : MonoBehaviour
             {
                 screens[i].SetActive(true);
             }
+        }
+    }
+
+    public void ClearMenus()
+    {
+        for (int i = 0; i < screens.Length - 1; i++)
+        {
+            screens[i].SetActive(false);
         }
     }
 
