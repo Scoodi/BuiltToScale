@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 840981604525762304}
   m_Layer: 6
   m_Name: Reverse L-Block 1
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

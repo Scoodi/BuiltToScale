@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6946413483404442282}
   - component: {fileID: 4150751670941318918}
-  - component: {fileID: 7318599947720793746}
+  - component: {fileID: 6484193089930516604}
   m_Layer: 0
   m_Name: Rock Mossy Block
   m_TagString: Ground
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7318599947720793746
-PolygonCollider2D:
+--- !u!61 &6484193089930516604
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,7 +117,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.22401536}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,52 +127,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 4.025, y: 3.8049998}
-      - {x: 3.865, y: 3.905}
-      - {x: 3.2749999, y: 3.895}
-      - {x: 3.2549999, y: 3.945}
-      - {x: 3.155, y: 3.915}
-      - {x: 1.755, y: 3.905}
-      - {x: 1.755, y: 3.935}
-      - {x: 1.175, y: 3.895}
-      - {x: 1.165, y: 3.955}
-      - {x: 1.095, y: 4.045}
-      - {x: 0.85499996, y: 3.925}
-      - {x: 0.755, y: 3.945}
-      - {x: 0.73499995, y: 4.115}
-      - {x: 0.675, y: 4.1349998}
-      - {x: 0.59499997, y: 4.145}
-      - {x: 0.525, y: 4.065}
-      - {x: 0.42499998, y: 3.965}
-      - {x: -0.515, y: 4.025}
-      - {x: -0.625, y: 4.145}
-      - {x: -0.695, y: 4.225}
-      - {x: -0.79499996, y: 4.225}
-      - {x: -0.85499996, y: 4.2149997}
-      - {x: -0.885, y: 4.005}
-      - {x: -1.375, y: 3.975}
-      - {x: -1.645, y: 4.105}
-      - {x: -1.875, y: 4.1949997}
-      - {x: -1.985, y: 4.1349998}
-      - {x: -2.0149999, y: 3.975}
-      - {x: -2.8049998, y: 3.935}
-      - {x: -2.995, y: 3.945}
-      - {x: -3.0449998, y: 4.005}
-      - {x: -3.155, y: 3.965}
-      - {x: -3.3149998, y: 3.955}
-      - {x: -3.5049999, y: 3.8349998}
-      - {x: -3.615, y: 4.015}
-      - {x: -3.745, y: 3.955}
-      - {x: -3.715, y: 3.8149998}
-      - {x: -3.935, y: 3.7949998}
-      - {x: -4.085, y: 3.695}
-      - {x: -4.085, y: -4.145}
-      - {x: -4.075, y: -4.165}
-      - {x: -4.025, y: -4.205}
-      - {x: -3.965, y: -4.225}
-      - {x: 4.015, y: -4.225}
-      - {x: 4.085, y: -4.165}
-      - {x: 4.085, y: 3.695}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 8.17, y: 8.001968}
+  m_EdgeRadius: 0

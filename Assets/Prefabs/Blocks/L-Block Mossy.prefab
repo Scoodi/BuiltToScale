@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7882998380389829163}
   m_Layer: 6
   m_Name: L-Block Mossy
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

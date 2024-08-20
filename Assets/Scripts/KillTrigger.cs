@@ -9,5 +9,10 @@ public class KillTrigger : MonoBehaviour
         if (collision.CompareTag("Player")) {
             LevelScript.Instance.LevelCompleted(LevelScript.Instance.currentLevel);
         }
+
+        if (collision.CompareTag("Block"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

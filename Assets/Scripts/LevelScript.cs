@@ -82,6 +82,13 @@ public class LevelScript : MonoBehaviour
     bool CheckIfSettled(int cdNum)
     {
         bool settled = true;
+        for (int i = 0; i < InventoryUI.Instance.placedRBs.Count; i++)
+        {
+            if (InventoryUI.Instance.placedRBs[i] == null)
+            {
+                InventoryUI.Instance.placedRBs.Remove(InventoryUI.Instance.placedRBs[i]);
+            }
+        }
         foreach (Rigidbody2D rb in InventoryUI.Instance.placedRBs)
         {
             if (rb.velocity.magnitude > maxVelocity)
