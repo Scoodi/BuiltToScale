@@ -321,7 +321,7 @@ public class PlatformerCharacterScript : MonoBehaviour
             rb.velocity = new Vector2(horizontalMove * moveSpeed, rb.velocity.y);
         } else
         {
-            if (!walkingSoundIsPlaying && climbing)
+            if (!walkingSoundIsPlaying && climbing && rb.velocity.magnitude > 0.01f)
             {
                 walkingSoundIsPlaying = true;
                 StartCoroutine(PlayClimbingSound());
