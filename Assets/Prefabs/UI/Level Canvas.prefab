@@ -843,8 +843,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: cc7f75a4ca60f473ba6aef520d654a15, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1565,8 +1565,7 @@ MonoBehaviour:
   buttonPositions: []
   IsButtonActive: 
   GamePadCursor: {fileID: 9016675743943130908}
-  blockSlotCellSize: 150
-  menuBottomPadding: 0
+  blockSlotHeight: 125
   xPositionOffset: 75
   yPositionOffset: -75
   placeBlockSound: {fileID: 8300000, guid: 9d86d59d810c24f06b6abdf748ba5d0b, type: 3}

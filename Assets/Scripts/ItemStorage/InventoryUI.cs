@@ -30,9 +30,11 @@ public class InventoryUI : MonoBehaviour
     private int currentGamepadPos = 0;
 
     [Header("Inventory UI")]
-    [SerializeField] private float blockSlotCellSize = 125f;
-    [SerializeField] private float menuBottomPadding = 0f;
+    [Tooltip("Button height spacing")]
+    [SerializeField] private float blockSlotHeight = 125f;
+    [Tooltip("X offset for buttons from the anchor point in the top left corner.")]
     [SerializeField] private float xPositionOffset = 75f;
+    [Tooltip("Y offset for buttons from the anchor point in the top left corner.")]
     [SerializeField] private float yPositionOffset = -75f;
 
 
@@ -105,14 +107,14 @@ public class InventoryUI : MonoBehaviour
         int count = 0;
 
         RectTransform UISize = GetComponent<RectTransform>();
-        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((-yPositionOffset/2f)+ (blockSlotCellSize * inventory.GetLoadedBlocks().Count + 1)));
+        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((Math.Abs(yPositionOffset)/2f)+ (blockSlotHeight * inventory.GetLoadedBlocks().Count)));
 
         foreach(GameObject block in inventory.GetLoadedBlocks())
         {
             RectTransform blockSlotRectTransform = Instantiate(blockSlotTemplate, blockSlotContainer).GetComponent<RectTransform>();
             blockSlotRectTransform.gameObject.SetActive(true);
             blockSlotRectTransform.gameObject.name = count.ToString();
-            blockSlotRectTransform.anchoredPosition = new Vector2(xPositionOffset, yPositionOffset - (y * blockSlotCellSize));
+            blockSlotRectTransform.anchoredPosition = new Vector2(xPositionOffset, yPositionOffset - (y * blockSlotHeight));
             buttonPositions.Add(blockSlotRectTransform);
             IsButtonActive.Add(true);
             Image image = blockSlotRectTransform.transform.Find("BlockButtonSlot").GetComponent<Image>();
