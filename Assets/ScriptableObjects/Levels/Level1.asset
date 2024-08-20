@@ -23,7 +23,8 @@ MonoBehaviour:
   - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   Hard:
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
-  nextLevel: {fileID: 0}
-  levelMusic: {fileID: 0}
+  nextLevel: {fileID: 11400000, guid: 2de5a80f7e980964ab7aecf18211a019, type: 2}
+  nextCutscene: 
+  levelMusic: {fileID: 8300000, guid: f056879e302f448d9bdf950ea1aa10d4, type: 3}
   playerSpawnPos: {x: -10, y: -7.79}
   playerSpawnFacingRight: 1

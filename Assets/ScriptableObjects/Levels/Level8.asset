@@ -31,6 +31,7 @@ MonoBehaviour:
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
   - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
   nextLevel: {fileID: 0}
+  nextCutscene: Cutscene 5 - Stage 2 Outro
   levelMusic: {fileID: 0}
   playerSpawnPos: {x: 0, y: -8}
   playerSpawnFacingRight: 1

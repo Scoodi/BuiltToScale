@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LevelScript : MonoBehaviour
 {
@@ -155,7 +156,14 @@ public class LevelScript : MonoBehaviour
             yield return new WaitForSeconds(fadeInOutTime);
         }
         PlatformerCharacterScript.Instance.loading = true;
-        LoadLevel(nextLevel);
+        if (nextLevel != null)
+        {
+            LoadLevel(nextLevel);
+        } else
+        {
+            PlayerPrefs.SetInt("CutsceneMode", 0);
+            SceneManager.LoadScene(currentLevel.nextCutscene);
+        }
         if (isFirstLevel)
         {
             SoundManager.Instance.InitialiseMusic();

@@ -13,6 +13,7 @@ public class LevelSO : ScriptableObject
     public List<GameObject> Hard;
 
     public LevelSO nextLevel;
+    public string nextCutscene;
     public AudioClip levelMusic;
 
     public Vector2 playerSpawnPos;
