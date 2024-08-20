@@ -40,6 +40,8 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private AudioClip piecesSetSound;
     [SerializeField] private AudioClip[] countdownSound;
 
+    [SerializeField] private bool debugLoad = false;
+    [SerializeField] private LevelSO firstLevel;
     [SerializeField] private LevelSO[] stageFirstLevels;
 
 
@@ -62,8 +64,15 @@ public class LevelScript : MonoBehaviour
         PlatformerCharacterScript.Instance.pauseAction.performed += _ => PauseGame();
         if (isFirstLevel)
         {
-            LevelCompleted(stageFirstLevels[PlayerPrefs.GetInt("CurrentStage")]);
-            //LevelCompleted(firstLevel);
+
+            if (debugLoad)
+            {
+                LevelCompleted(firstLevel);
+            } else
+            {
+                LevelCompleted(stageFirstLevels[PlayerPrefs.GetInt("CurrentStage")]);
+            }
+
         }
         SoundManager.Instance.InitialiseMusic();
         InventoryUI.Instance.inventory.LoadBlocks();
