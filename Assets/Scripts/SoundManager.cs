@@ -64,28 +64,27 @@ public class SoundManager : MonoBehaviour
     // Jammin Jammin!
     public void SetMusicVolume(float vol)
     {
-        PlayerPrefs.SetFloat("MusicVolume", vol);
         float volumeToSet = vol * GetMasterVolume();
         musicSourceOne.volume = volumeToSet;
         musicSourceTwo.volume = volumeToSet;
+        PlayerPrefs.SetFloat("MusicVolume", volumeToSet);
     }
 
     public void SetSfxVolume(float vol)
     {
-        PlayerPrefs.SetFloat("SfxVolume", vol);
         float volumeToSet = vol * GetMasterVolume();
         soundFXObject.volume = volumeToSet;
-        // set the sfxSource volume in PP
+        PlayerPrefs.SetFloat("SfxVolume", volumeToSet);
     }
 
     public void SetMasterVolume(float vol)
     {
+        float sfxVolumeToSet = vol * GetSfxVolume();
+        float musicVolumeToSet = vol * GetMusicVolume();
+        soundFXObject.volume = sfxVolumeToSet;
+        musicSourceOne.volume = musicVolumeToSet;
+        musicSourceTwo.volume = musicVolumeToSet;
         PlayerPrefs.SetFloat("MasterVolume", vol);
-        float volumeToSet = vol * GetMasterVolume();
-        soundFXObject.volume = volumeToSet;
-        musicSourceOne.volume = volumeToSet;
-        musicSourceTwo.volume = volumeToSet;
-        // set the sfxSource volume in PP
     }
 
     public float GetMasterVolume()
