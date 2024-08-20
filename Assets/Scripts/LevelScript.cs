@@ -25,6 +25,11 @@ public class LevelScript : MonoBehaviour
 
     [SerializeField] private TMP_Text countdownText;
 
+    [Header("Countdown Colors")]
+    [SerializeField] private Color countdownColor;
+    [SerializeField] private Color piecesSettledColor;
+    [SerializeField] private Color piecesNotSettledColor;
+
     [Header("AudioClips")]
     [SerializeField] private AudioClip piecesNotSetSound;
     [SerializeField] private AudioClip piecesSetSound;
@@ -77,7 +82,7 @@ public class LevelScript : MonoBehaviour
             {
                 isCheckingPieces = false;
                 Debug.Log("Pieces not settled!");
-                countdownText.color = Color.red;
+                countdownText.color = piecesNotSettledColor;
                 countdownText.text = "Pieces not settled!";
                 SoundManager.Instance.PlaySFXClip(piecesNotSetSound, Camera.main.transform);
                 countdownText.DOFade(0, 3f);
@@ -100,7 +105,7 @@ public class LevelScript : MonoBehaviour
             isCheckingPieces = true;
             for (int i = 0; i < 3; i++)
             {
-                countdownText.color = Color.white;
+                countdownText.color = countdownColor;
                 countdownText.DOKill();
                 countdownText.text = (3 - i).ToString();
                 if (!CheckIfSettled(2-i))
@@ -119,7 +124,7 @@ public class LevelScript : MonoBehaviour
                 InventoryUI.Instance.HideGamepadCursor();
                 PlatformerCharacterScript.Instance.SwapMode();
                 SoundManager.Instance.PlaySFXClip(piecesSetSound, Camera.main.transform);
-                countdownText.color = Color.green;
+                countdownText.color = piecesSettledColor;
                 countdownText.text = "Pieces Settled!";
                 countdownText.DOFade(0, 3f);
 
