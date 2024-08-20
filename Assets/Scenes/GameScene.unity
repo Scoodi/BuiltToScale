@@ -1922,6 +1922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424152b2660f98b43b2b1ce8a228eb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallOffSound: {fileID: 8300000, guid: 756d2f33e445d4b74bf71c276b7f1b76, type: 3}
 --- !u!4 &1692607058
 Transform:
   m_ObjectHideFlags: 0

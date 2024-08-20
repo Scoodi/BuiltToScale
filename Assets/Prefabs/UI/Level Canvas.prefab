@@ -1542,7 +1542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a51129fcbaa774da2d0a112de91a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstLevel: {fileID: 11400000, guid: 7e56b5c30a897134d865a282bf81db9a, type: 2}
   currentLevel: {fileID: 0}
   currentLevelPrefab: {fileID: 0}
   maxVelocity: 0.1
@@ -1559,6 +1558,7 @@ MonoBehaviour:
   countdownColor: {r: 1, g: 1, b: 1, a: 1}
   piecesSettledColor: {r: 0, g: 1, b: 0, a: 1}
   piecesNotSettledColor: {r: 1, g: 0, b: 0, a: 1}
+  pauseClickSound: {fileID: 8300000, guid: 34b034c2a9f7c46958ca10c27f79b5a5, type: 3}
   penClickSound: {fileID: 8300000, guid: 155fff0120dc0439aab1b1db1f0bb21a, type: 3}
   piecesNotSetSound: {fileID: 8300000, guid: 0a7a3d5235adf42b981c4399527fc146, type: 3}
   piecesSetSound: {fileID: 8300000, guid: 1ae1040fabb284a30be38e7fbb4406e7, type: 3}
@@ -1566,6 +1566,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0886ce1170e784cd2bc6760f3dfcee71, type: 3}
   - {fileID: 8300000, guid: 7aed0cd2cd9804541a26aa02bb49ebc8, type: 3}
   - {fileID: 8300000, guid: 5b3357d73a8cf419c80ea5b5ce0a9a84, type: 3}
+  debugLoad: 0
+  firstLevel: {fileID: 11400000, guid: 7e56b5c30a897134d865a282bf81db9a, type: 2}
+  stageFirstLevels: []
 --- !u!1 &6962013533007583494
 GameObject:
   m_ObjectHideFlags: 0

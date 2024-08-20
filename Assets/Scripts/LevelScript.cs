@@ -35,6 +35,7 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Color piecesNotSettledColor;
 
     [Header("AudioClips")]
+    [SerializeField] private AudioClip pauseClickSound;
     [SerializeField] private AudioClip penClickSound;
     [SerializeField] private AudioClip piecesNotSetSound;
     [SerializeField] private AudioClip piecesSetSound;
@@ -237,6 +238,7 @@ public class LevelScript : MonoBehaviour
             Time.timeScale = 0f;
             gamePaused = true;
         }
+        SoundManager.Instance.PlaySFXClip(pauseClickSound, Camera.main.transform);
         pauseMenu.SetActive(gamePaused);
     }
 
