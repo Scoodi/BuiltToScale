@@ -194,6 +194,8 @@ public class LevelScript : MonoBehaviour
         levelCamera.orthographicSize = levelToLoad.cameraSize;
         currentLevelPrefab = Instantiate(levelToLoad.levelPrefab);
         PlatformerCharacterScript.Instance.ResetPlayer(levelToLoad.playerSpawnPos);
+        playModeButton.SetActive(false);
+        buildModeButton.gameObject.SetActive(true);
         currentLevel = levelToLoad;
         InventoryUI.Instance.ReloadInventoryBlocks();
     }
