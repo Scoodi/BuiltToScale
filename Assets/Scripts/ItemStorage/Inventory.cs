@@ -15,8 +15,6 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<GameObject> loadedBlocks;
 
 
-    public Difficulty difficulty;
-
     public void Awake()
     {
         loadedBlocks = new List<GameObject>();
@@ -48,21 +46,21 @@ public class Inventory : MonoBehaviour
     {
         levelBlocks = LevelScript.Instance.currentLevel;
 
-        if( difficulty == Difficulty.Easy )
+        if(PlayerPrefs.GetInt("Difficulty") == (int)Difficulty.Easy)
         {
             foreach( GameObject block in levelBlocks.Easy)
             {
                 loadedBlocks.Add(block);
             }
         }
-        else if(difficulty == Difficulty.Medium)
+        else if(PlayerPrefs.GetInt("Difficulty") == (int)Difficulty.Medium)
         {
             foreach (GameObject block in levelBlocks.Medium)
             {
                 loadedBlocks.Add(block);
             }
         }
-        else if (difficulty == Difficulty.Hard)
+        else if (PlayerPrefs.GetInt("Difficulty") == (int)Difficulty.Hard)
         {
             foreach (GameObject block in levelBlocks.Hard)
             {
