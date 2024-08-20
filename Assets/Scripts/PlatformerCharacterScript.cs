@@ -89,6 +89,7 @@ public class PlatformerCharacterScript : MonoBehaviour
     {
         SwapMode(true);
         currentStamina = maxStaminaSeconds;
+        horizontalMove = verticalMove = 0;
         rb.velocity = Vector2.zero;
         transform.position = pos;
     }
@@ -203,7 +204,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         //rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
-    void DisableClimb(bool removeVelocity = false)
+    public void DisableClimb(bool removeVelocity = false)
     {
         climbing = false;
         rb.gravityScale = 1f;
