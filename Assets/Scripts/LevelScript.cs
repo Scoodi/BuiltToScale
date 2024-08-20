@@ -23,6 +23,9 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private bool isCheckingPieces = false;
     //TODO add reference to inventory
 
+    [SerializeField] private GameObject playModeButton;
+    [SerializeField] private Button buildModeButton;
+
     [SerializeField] private TMP_Text countdownText;
 
     [Header("Countdown Colors")]
@@ -31,6 +34,7 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Color piecesNotSettledColor;
 
     [Header("AudioClips")]
+    [SerializeField] private AudioClip penClickSound;
     [SerializeField] private AudioClip piecesNotSetSound;
     [SerializeField] private AudioClip piecesSetSound;
     [SerializeField] private AudioClip[] countdownSound;
@@ -65,6 +69,7 @@ public class LevelScript : MonoBehaviour
     {
         if (PlatformerCharacterScript.Instance.building)
         {
+            SoundManager.Instance.PlaySFXClip(penClickSound, Camera.main.transform);
             StartCoroutine("SettleCountdown");
         }
         else
@@ -123,6 +128,8 @@ public class LevelScript : MonoBehaviour
                 InventoryUI.Instance.DestroyCurrentBlock();
                 InventoryUI.Instance.HideGamepadCursor();
                 PlatformerCharacterScript.Instance.SwapMode();
+                buildModeButton.gameObject.SetActive(false);
+                playModeButton.SetActive(true);
                 SoundManager.Instance.PlaySFXClip(piecesSetSound, Camera.main.transform);
                 countdownText.color = piecesSettledColor;
                 countdownText.text = "Pieces Settled!";
@@ -197,4 +204,5 @@ public class LevelScript : MonoBehaviour
         }
         pauseMenu.SetActive(gamePaused);
     }
+
 }
