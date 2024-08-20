@@ -1544,6 +1544,9 @@ MonoBehaviour:
   isFirstLevel: 1
   isCheckingPieces: 0
   countdownText: {fileID: 8947949808134007256}
+  countdownColor: {r: 1, g: 1, b: 1, a: 1}
+  piecesSettledColor: {r: 0, g: 1, b: 0, a: 1}
+  piecesNotSettledColor: {r: 1, g: 0, b: 0, a: 1}
   piecesNotSetSound: {fileID: 8300000, guid: 0a7a3d5235adf42b981c4399527fc146, type: 3}
   piecesSetSound: {fileID: 8300000, guid: 1ae1040fabb284a30be38e7fbb4406e7, type: 3}
   countdownSound:
