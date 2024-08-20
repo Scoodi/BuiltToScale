@@ -11,5 +11,29 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: a51573214b024c24cbecff5ad91d0d93
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 1 - Opening.unity
+    guid: e03ac06c8ea57e3469f482906e5adf6d
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 2 - Stage 1 Intro.unity
+    guid: 717108db72e972e43bdbdc63a8fc00d1
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 3 - Stage 1 Outro.unity
+    guid: 98d2fdffca899c240bdf104d1b5f791b
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 4 - Stage 2 Intro.unity
+    guid: 9bdbae76e06bbb247a712871428f7846
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 5 - Stage 2 Outro.unity
+    guid: ae5de6fd5a14e344f8c640d608875546
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 6 - Stage 3 Intro.unity
+    guid: dbd7384d97cccc84faa3d48379e197fc
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 7 - Stage 3 Outro.unity
+    guid: 81444d6303bb2da4cb1c6d0e61c0fe1e
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene 8 - Closing Scene.unity
+    guid: 88524ba207e12e9419967cc69da37d5b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a566fdd974508654497c52b41ebe878f, type: 2}

@@ -119,7 +119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8019651387747289282}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3417792951716805528}
+        m_TargetAssemblyTypeName: LevelScript, Assembly-CSharp
+        m_MethodName: TryGoToPlatforming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &195217383666704242
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +436,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.7877358, g: 0.9797057, b: 1, a: 1}
     m_PressedColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -438,7 +450,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 6736008837012773808}
   m_OnClick:
     m_PersistentCalls:
@@ -1173,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectAudio:
-  - {fileID: 8300000, guid: f20ba65dd62234a10829acb9e101944d, type: 3}
+  - {fileID: 8300000, guid: 2c1a501bf322d43039ccc8196e85e450, type: 3}
   pressAudio: {fileID: 8300000, guid: 9d86d59d810c24f06b6abdf748ba5d0b, type: 3}
 --- !u!114 &4197343027932895824
 MonoBehaviour:
@@ -1543,10 +1555,13 @@ MonoBehaviour:
   gamePaused: 0
   isFirstLevel: 1
   isCheckingPieces: 0
+  playModeButton: {fileID: 471694289867543181}
+  buildModeButton: {fileID: 7776274063089436583}
   countdownText: {fileID: 8947949808134007256}
   countdownColor: {r: 1, g: 1, b: 1, a: 1}
   piecesSettledColor: {r: 0, g: 1, b: 0, a: 1}
   piecesNotSettledColor: {r: 1, g: 0, b: 0, a: 1}
+  penClickSound: {fileID: 8300000, guid: 155fff0120dc0439aab1b1db1f0bb21a, type: 3}
   piecesNotSetSound: {fileID: 8300000, guid: 0a7a3d5235adf42b981c4399527fc146, type: 3}
   piecesSetSound: {fileID: 8300000, guid: 1ae1040fabb284a30be38e7fbb4406e7, type: 3}
   countdownSound:
@@ -1850,7 +1865,7 @@ MonoBehaviour:
   xPositionOffset: 75
   yPositionOffset: -75
   placeBlockSound: {fileID: 8300000, guid: 9d86d59d810c24f06b6abdf748ba5d0b, type: 3}
-  selectBlockSound: {fileID: 8300000, guid: f20ba65dd62234a10829acb9e101944d, type: 3}
+  selectBlockSound: {fileID: 8300000, guid: 2c1a501bf322d43039ccc8196e85e450, type: 3}
 --- !u!1 &8742645131585356998
 GameObject:
   m_ObjectHideFlags: 0

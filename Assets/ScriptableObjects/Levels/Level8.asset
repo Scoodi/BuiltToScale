@@ -10,30 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80147ae8e61cc71449dd798ca649e66d, type: 3}
-  m_Name: Level5
+  m_Name: Level8
   m_EditorClassIdentifier: 
-  levelNumber: 5
-  levelPrefab: {fileID: 2472237717229322097, guid: 5d797e49fbde67e4fa8423eb58d4353e, type: 3}
-  cameraSize: 12
+  levelNumber: 8
+  levelPrefab: {fileID: 3777102649303602612, guid: a116fb6933a2f9246876a562d0778f74, type: 3}
+  cameraSize: 10
   Easy:
-  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
+  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   - {fileID: 8580225913947821665, guid: 7d3274afb6c5aad44877e1bcc914ec85, type: 3}
   - {fileID: 8580225913947821665, guid: 7d3274afb6c5aad44877e1bcc914ec85, type: 3}
+  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
   Medium:
-  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
   - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
   - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
-  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
-  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
-  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
-  - {fileID: 8580225913947821665, guid: bcfa0f0c4fab7ed4fb20b8b34f731c4e, type: 3}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
   Hard:
-  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
-  - {fileID: 6125041531055447814, guid: 2b170ab14b7f5114285fd4ffdfe7a2c5, type: 3}
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
-  nextLevel: {fileID: 11400000, guid: d81da54aad44f4d4e9941d83f7cd2b85, type: 2}
+  - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
+  nextLevel: {fileID: 0}
+  nextCutscene: Cutscene 5 - Stage 2 Outro
   levelMusic: {fileID: 0}
-  playerSpawnPos: {x: -14.6, y: -3.4}
+  playerSpawnPos: {x: 0, y: -8}
   playerSpawnFacingRight: 1
