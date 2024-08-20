@@ -155,6 +155,12 @@ public class LevelScript : MonoBehaviour
         StartCoroutine(LevelTransition(nextLevel));
     }
 
+    public void ResetLevel()
+    {
+        //StartCoroutine(LevelTransition(currentLevel));
+        LoadLevel(currentLevel);
+    }
+
     IEnumerator LevelTransition(LevelSO nextLevel)
     {
         if (currentLevel != null)
