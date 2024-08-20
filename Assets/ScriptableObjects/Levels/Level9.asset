@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80147ae8e61cc71449dd798ca649e66d, type: 3}
+  m_Name: Level9
+  m_EditorClassIdentifier: 
+  levelNumber: 8
+  levelPrefab: {fileID: 8232032395775425724, guid: 50d4b49577c08fe489f982395eed1469, type: 3}
+  cameraSize: 10
+  Easy:
+  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  - {fileID: 8580225913947821665, guid: c4d1a22a5c1849340b25a1858ec4b74e, type: 3}
+  Medium:
+  - {fileID: 8580225913947821665, guid: 7d8e094e4f066694586617ec373307c0, type: 3}
+  - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
+  - {fileID: 8580225913947821665, guid: a4492d08567df9b46b9f9b9e88ec79f2, type: 3}
+  Hard:
+  - {fileID: 1265650568563015459, guid: 0fecb3fd594026f4c9b66d07bc99351e, type: 3}
+  - {fileID: 8580225913947821665, guid: 4bfba41c96e721c4484ad8f92459cded, type: 3}
+  - {fileID: 8580225913947821665, guid: 4bfba41c96e721c4484ad8f92459cded, type: 3}
+  - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
+  nextLevel: {fileID: 0}
+  nextCutscene: 
+  levelMusic: {fileID: 0}
+  playerSpawnPos: {x: -11, y: -8}
+  playerSpawnFacingRight: 1
