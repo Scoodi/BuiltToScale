@@ -333,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb746dca2c943844d97a60859b2b7920, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76b2b751b1f4241f5b2fb2bd880a1b85, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -846,6 +846,8 @@ MonoBehaviour:
   actions: {fileID: -944628639613478452, guid: 76c10491f832ee445a2c62e41ec33044, type: 3}
   dialogueSOs:
   - {fileID: 11400000, guid: 2e143e65402a1634db0b7c3ac1534290, type: 2}
+  nextStage: 0
   nameDisplay: {fileID: 6648469140193616665}
   speechDisplay: {fileID: 1717821577125445542}
+  nextCutscene: Uninitialised
   nextLevel: GameScene

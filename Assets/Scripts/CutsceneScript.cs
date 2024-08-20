@@ -17,6 +17,8 @@ public class CutsceneScript : MonoBehaviour
     public int nextStage;
     public TMP_Text nameDisplay;
     public TMP_Text speechDisplay;
+    
+    private bool cutsceneDone = false;
 
     public string nextCutscene = "Uninitialised";
     public string nextLevel = "Uninitialised";
@@ -53,23 +55,33 @@ public class CutsceneScript : MonoBehaviour
 
     void AdvanceDialogue ()
     {
+        Debug.Log(cutsceneDone);
+        if (cutsceneDone)
+        {
+            //return;
+        }
         if (SceneManager.GetActiveScene().name.Contains("Cutscene"))
         {
             if (currentDialogue < dialogueSOs.Length - 1)
             {
                 currentDialogue++;
+                Debug.Log(currentDialogue);
                 LoadDialogue(dialogueSOs[currentDialogue]);
             }
             else if (PlayerPrefs.GetInt("CutsceneMode") == 0)
             {
+                Debug.Log("Loading next level");
                 PlayerPrefs.SetInt("CurrentStage", nextStage);
+                cutsceneDone = true;
                 SceneManager.LoadScene(nextLevel);
             } else if (nextCutscene != "Uninitialised")
             {
                 SceneManager.LoadScene(nextCutscene);
+                cutsceneDone = true;
             } else
             {
                 PlayerPrefs.SetInt("CutsceneMode", 0);
+                cutsceneDone = true;
                 SceneManager.LoadScene("MainMenu");
             }
         }
