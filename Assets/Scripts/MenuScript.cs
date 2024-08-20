@@ -85,7 +85,8 @@ public class MenuScript : MonoBehaviour
     public void StartGame (int difficulty)
     {
         PlayerPrefs.SetInt("Difficulty", difficulty);
-        SceneManager.LoadScene("GameScene");
+        //SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("Cutscene 1 - Opening");
     }
 
     public void StartCutscene(int cutsceneStage)
