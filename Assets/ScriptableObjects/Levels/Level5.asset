@@ -34,6 +34,7 @@ MonoBehaviour:
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
   - {fileID: 8580225913947821665, guid: 79b2e1923b3d35240a6bbd2bec6c7158, type: 3}
   nextLevel: {fileID: 11400000, guid: d81da54aad44f4d4e9941d83f7cd2b85, type: 2}
-  levelMusic: {fileID: 0}
+  nextCutscene: 
+  levelMusic: {fileID: 8300000, guid: 91734fa565598430a87cf81323225820, type: 3}
   playerSpawnPos: {x: -14.6, y: -3.4}
   playerSpawnFacingRight: 1

@@ -36,7 +36,7 @@ MonoBehaviour:
   - {fileID: 7729329559650639990, guid: af4a0c1c8c5c0834bb87cf4eee501679, type: 3}
   - {fileID: 80605722011072461, guid: 38ba634d8be8fd44fb3c8b159e7453bd, type: 3}
   nextLevel: {fileID: 0}
-  nextCutscene: 
-  levelMusic: {fileID: 0}
+  nextCutscene: Cutscene 7 - Stage 3 Outro
+  levelMusic: {fileID: 8300000, guid: e708a98ae482b4980aff3f515eeeba2f, type: 3}
   playerSpawnPos: {x: -14.23, y: -5}
   playerSpawnFacingRight: 1
