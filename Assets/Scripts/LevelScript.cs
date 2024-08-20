@@ -110,16 +110,23 @@ public class LevelScript : MonoBehaviour
                 Debug.Log("Waited " + i + " seconds");
                 yield return new WaitForSeconds(1f);
             }
-            InventoryUI.Instance.DestroyCurrentBlock();
-            InventoryUI.Instance.HideGamepadCursor();
-            PlatformerCharacterScript.Instance.SwapMode();
-            SoundManager.Instance.PlaySFXClip(piecesSetSound, Camera.main.transform);
-            countdownText.color = Color.green;
-            countdownText.text = "Pieces Settled!";
-            countdownText.DOFade(0, 3f);
+            if (!CheckIfSettled(0))
+            {
+                StopCoroutine("SettleCountdown");
+            } else
+            {
+                InventoryUI.Instance.DestroyCurrentBlock();
+                InventoryUI.Instance.HideGamepadCursor();
+                PlatformerCharacterScript.Instance.SwapMode();
+                SoundManager.Instance.PlaySFXClip(piecesSetSound, Camera.main.transform);
+                countdownText.color = Color.green;
+                countdownText.text = "Pieces Settled!";
+                countdownText.DOFade(0, 3f);
 
-            Debug.Log("Settled");
-            isCheckingPieces = false;
+                Debug.Log("Settled");
+                isCheckingPieces = false;
+            }
+            
         }
     }
 
