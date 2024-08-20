@@ -817,6 +817,22 @@ PrefabInstance:
       propertyPath: levelCamera
       value: 
       objectReference: {fileID: 147291186}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: stageFirstLevels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: stageFirstLevels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e56b5c30a897134d865a282bf81db9a, type: 2}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: stageFirstLevels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ec90f86baa5b044b9d772923d309721, type: 2}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: stageFirstLevels.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1676bdd746219194389ee6a478e2feb5, type: 2}
     - target: {fileID: 5348290289165808990, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

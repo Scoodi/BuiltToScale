@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelScript : MonoBehaviour
 {
-    [SerializeField] private LevelSO firstLevel;
+    //[SerializeField] private LevelSO firstLevel;
     public static LevelScript Instance { get; private set; }
     public LevelSO currentLevel;
     [SerializeField] private GameObject currentLevelPrefab;
@@ -40,6 +40,8 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private AudioClip piecesSetSound;
     [SerializeField] private AudioClip[] countdownSound;
 
+    [SerializeField] private LevelSO[] stageFirstLevels;
+
 
 
     private void Awake()
@@ -60,7 +62,8 @@ public class LevelScript : MonoBehaviour
         PlatformerCharacterScript.Instance.pauseAction.performed += _ => PauseGame();
         if (isFirstLevel)
         {
-            LevelCompleted(firstLevel);
+            LevelCompleted(stageFirstLevels[PlayerPrefs.GetInt("CurrentStage")]);
+            //LevelCompleted(firstLevel);
         }
         SoundManager.Instance.InitialiseMusic();
         InventoryUI.Instance.inventory.LoadBlocks();
