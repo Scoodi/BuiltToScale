@@ -78,9 +78,12 @@ public class MenuScript : MonoBehaviour
 
     private void InitialiseSliders()
     {
-        masterVolumeSlider.value = SoundManager.Instance.GetMasterVolume();
-        musicVolumeSlider.value = SoundManager.Instance.GetMusicVolume();
-        sfxVolumeSlider.value = SoundManager.Instance.GetSfxVolume();
+        if(masterVolumeSlider != null && musicVolumeSlider != null && sfxVolumeSlider != null)
+        {
+            masterVolumeSlider.value = SoundManager.Instance.GetMasterVolume();
+            musicVolumeSlider.value = SoundManager.Instance.GetMusicVolume();
+            sfxVolumeSlider.value = SoundManager.Instance.GetSfxVolume();
+        }
     }
 
     // Update is called once per frame
