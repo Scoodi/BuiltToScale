@@ -699,14 +699,6 @@ PrefabInstance:
       propertyPath: levelCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 5343014567900548916, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
-      propertyPath: blockSlotHeight
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 5343014567900548916, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
-      propertyPath: blockSlotCellSize
-      value: 125
-      objectReference: {fileID: 0}
     - target: {fileID: 6411351130484049359, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0

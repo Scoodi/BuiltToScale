@@ -107,7 +107,7 @@ public class InventoryUI : MonoBehaviour
         int count = 0;
 
         RectTransform UISize = GetComponent<RectTransform>();
-        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((Math.Abs(yPositionOffset)/2f)+ (blockSlotHeight * inventory.GetLoadedBlocks().Count)));
+        UISize.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ((Math.Abs(yPositionOffset)/2f) + (blockSlotHeight * inventory.GetLoadedBlocks().Count)));
 
         foreach(GameObject block in inventory.GetLoadedBlocks())
         {
