@@ -58,7 +58,7 @@ public class CutsceneScript : MonoBehaviour
         Debug.Log(cutsceneDone);
         if (cutsceneDone)
         {
-            //return;
+            return;
         }
         if (SceneManager.GetActiveScene().name.Contains("Cutscene"))
         {
