@@ -287,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1659400854}
+    - target: {fileID: 3822422719306434289, guid: f71e9055e13387547897e23d56a701d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 494ab73664beb984cbd65a058c9bacb0, type: 3}
     - target: {fileID: 5113977353204766045, guid: f71e9055e13387547897e23d56a701d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -370,6 +374,14 @@ PrefabInstance:
     - target: {fileID: 8612759736268339072, guid: f71e9055e13387547897e23d56a701d8, type: 3}
       propertyPath: m_Name
       value: Cutscene Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796902269326200298, guid: f71e9055e13387547897e23d56a701d8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -440.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796902269326200298, guid: f71e9055e13387547897e23d56a701d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 46.2
       objectReference: {fileID: 0}
     - target: {fileID: 9205817502491813953, guid: f71e9055e13387547897e23d56a701d8, type: 3}
       propertyPath: nextStage
