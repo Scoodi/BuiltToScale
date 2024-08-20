@@ -174,6 +174,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         playerAnim.SetBool("Climbing", climbing);
         playerAnim.SetFloat("VelMag", rb.velocity.magnitude);
         playerAnim.SetFloat("Stamina", currentStamina);
+        playerAnim.SetBool("Building", building);
         //May need to scale magnitude
     }
     void Climb()
