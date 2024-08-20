@@ -241,7 +241,7 @@ public class PlatformerCharacterScript : MonoBehaviour
         Physics2D.OverlapCollider(grabCollider, grabContactFilter, overlapResults);
         if (overlapResults.Count == 0)
         {
-            DisableClimb(true);
+            DisableClimb();
         }
     }
     void Jump () {
