@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Inventory;
 
 public class MenuScript : MonoBehaviour
 {
@@ -17,16 +18,54 @@ public class MenuScript : MonoBehaviour
 
     [SerializeField] private GameObject[] screens;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string[] stageIntroCutscenes;
+
+    void Awake()
     {
-        
+        InitialisePlayerPrefs();
+    }
+
+    void InitialisePlayerPrefs()
+    {
+        if (!PlayerPrefs.HasKey("Difficulty"))
+        {
+            PlayerPrefs.SetInt("Difficulty", 1);
+        }
+        if (!PlayerPrefs.HasKey("LevelToLoad"))
+        {
+            PlayerPrefs.SetString("LevelToLoad", "GameScene");
+        }
+        if (!PlayerPrefs.HasKey("CurrentStage"))
+        {
+            PlayerPrefs.SetInt("CurrentStage", 0);
+        }
+        if (!PlayerPrefs.HasKey("CutsceneMode"))
+        {
+            PlayerPrefs.SetInt ("CutsceneMode", 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetCutsceneMode(bool cutsceneMode)
+    {
+        if (cutsceneMode)
+        {
+            PlayerPrefs.SetInt("CutsceneMode", 1);
+        } else
+        {
+            PlayerPrefs.SetInt("CutsceneMode", 0);
+        }
+
+    }
+
+    public void SetStageToLoad(int stageIndex)
+    {
+        PlayerPrefs.SetInt("CurrentStage", stageIndex);
     }
 
     public void SwitchToMenu (string menu)
@@ -43,9 +82,16 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    public void StartGame ()
+    public void StartGame (int difficulty)
     {
+        PlayerPrefs.SetInt("Difficulty", difficulty);
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void StartCutscene(int cutsceneStage)
+    {
+        SetCutsceneMode(true);
+        SceneManager.LoadScene(stageIntroCutscenes[cutsceneStage]);
     }
 
     public void LoadMainMenu()

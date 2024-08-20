@@ -14,10 +14,11 @@ public class CutsceneScript : MonoBehaviour
 
     public DialogueSO[] dialogueSOs;
     private int currentDialogue = 0;
-
+    public int nextStage;
     public TMP_Text nameDisplay;
     public TMP_Text speechDisplay;
 
+    public string nextCutscene = "Uninitialised";
     public string nextLevel = "Uninitialised";
     void Awake()
     {
@@ -59,9 +60,17 @@ public class CutsceneScript : MonoBehaviour
                 currentDialogue++;
                 LoadDialogue(dialogueSOs[currentDialogue]);
             }
-            else
+            else if (PlayerPrefs.GetInt("CutsceneMode") == 0)
             {
+                PlayerPrefs.SetInt("CurrentStage", nextStage);
                 SceneManager.LoadScene(nextLevel);
+            } else if (nextCutscene != "Uninitialised")
+            {
+                SceneManager.LoadScene(nextCutscene);
+            } else
+            {
+                PlayerPrefs.SetInt("CutsceneMode", 0);
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }

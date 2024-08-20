@@ -372,6 +372,10 @@ PrefabInstance:
       value: Cutscene Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 9205817502491813953, guid: f71e9055e13387547897e23d56a701d8, type: 3}
+      propertyPath: nextStage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205817502491813953, guid: f71e9055e13387547897e23d56a701d8, type: 3}
       propertyPath: dialogueSOs.Array.size
       value: 2
       objectReference: {fileID: 0}
