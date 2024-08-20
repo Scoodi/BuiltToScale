@@ -36,31 +36,19 @@ public class SoundManager : MonoBehaviour
 
         //SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume"));
         //SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume"));
-        SetMasterVolume(1.0f);
-        SetMusicVolume(0.6f);
-        SetSfxVolume(1.0f);
         //ambientSource.volume = 0.5f;
     }
 
     public void Start()
     {
-       
+        //SetMasterVolume(1.0f);
+        //SetMusicVolume(0.6f);
+        //SetSfxVolume(1.0f);
     }
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) 
-        {
-            PlaySFXClip(testClipOne, Camera.main.transform);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            PlaySFXClip(testClipTwo, Camera.main.transform);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            PlaySFXClip(testClipThree, Camera.main.transform);
-        }
+        
     }
 
     public void InitialiseMusic()
@@ -76,39 +64,43 @@ public class SoundManager : MonoBehaviour
     // Jammin Jammin!
     public void SetMusicVolume(float vol)
     {
+        PlayerPrefs.SetFloat("MusicVolume", vol);
         float volumeToSet = vol * GetMasterVolume();
         musicSourceOne.volume = volumeToSet;
         musicSourceTwo.volume = volumeToSet;
-        musicVolume = volumeToSet;
     }
 
     public void SetSfxVolume(float vol)
     {
+        PlayerPrefs.SetFloat("SfxVolume", vol);
         float volumeToSet = vol * GetMasterVolume();
-        sfxVolume = volumeToSet;
         soundFXObject.volume = volumeToSet;
         // set the sfxSource volume in PP
     }
 
     public void SetMasterVolume(float vol)
     {
-        masterVolume = vol;
+        PlayerPrefs.SetFloat("MasterVolume", vol);
+        float volumeToSet = vol * GetMasterVolume();
+        soundFXObject.volume = volumeToSet;
+        musicSourceOne.volume = volumeToSet;
+        musicSourceTwo.volume = volumeToSet;
         // set the sfxSource volume in PP
     }
 
     public float GetMasterVolume()
     {
-        return masterVolume;
+        return PlayerPrefs.GetFloat("MasterVolume");
     }
 
     public float GetMusicVolume()
     {
-        return musicVolume;
+        return PlayerPrefs.GetFloat("MusicVolume");
     }
 
     public float GetSfxVolume()
     {
-        return sfxVolume;
+        return PlayerPrefs.GetFloat("SfxVolume");
     }
 
     public void ChangeMusicOnLevelChange()

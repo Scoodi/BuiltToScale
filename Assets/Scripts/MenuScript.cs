@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static Inventory;
 
 public class MenuScript : MonoBehaviour
@@ -20,9 +21,19 @@ public class MenuScript : MonoBehaviour
 
     [SerializeField] private string[] stageIntroCutscenes;
 
+    [Header("Settings Sliders")]
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
+
     void Awake()
     {
         InitialisePlayerPrefs();
+    }
+
+    private void Start()
+    {
+        InitialiseSliders();
     }
 
     void InitialisePlayerPrefs()
@@ -41,14 +52,46 @@ public class MenuScript : MonoBehaviour
         }
         if (!PlayerPrefs.HasKey("CutsceneMode"))
         {
-            PlayerPrefs.SetInt ("CutsceneMode", 0);
+            PlayerPrefs.SetInt("CutsceneMode", 0);
         }
+        if (!PlayerPrefs.HasKey("MasterVolume"))
+        {
+            PlayerPrefs.SetFloat("MasterVolume", 1f);
+        }
+        if (!PlayerPrefs.HasKey("MusicVolume"))
+        {
+            PlayerPrefs.SetFloat("MusicVolume", 1f);
+        }
+        if (!PlayerPrefs.HasKey("SfxVolume"))
+        {
+            PlayerPrefs.SetFloat("SfxVolume", 1f);
+        }
+    }
+
+    private void InitialiseSliders()
+    {
+        masterVolumeSlider.value = SoundManager.Instance.GetMasterVolume();
+        musicVolumeSlider.value = SoundManager.Instance.GetMusicVolume();
+        sfxVolumeSlider.value = SoundManager.Instance.GetSfxVolume();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void SetMasterVolume(float vol)
+    {
+        SoundManager.Instance.SetMasterVolume(vol);
+    }
+    public void SetSFXVolume(float vol)
+    {
+        SoundManager.Instance.SetSfxVolume(vol);
+    }
+    public void SetMusicVolume(float vol)
+    {
+        SoundManager.Instance.SetMusicVolume(vol);
     }
 
     public void SetCutsceneMode(bool cutsceneMode)
