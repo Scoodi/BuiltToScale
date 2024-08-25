@@ -67,14 +67,14 @@ public class SoundManager : MonoBehaviour
         float volumeToSet = vol * GetMasterVolume();
         musicSourceOne.volume = volumeToSet;
         musicSourceTwo.volume = volumeToSet;
-        PlayerPrefs.SetFloat("MusicVolume", volumeToSet);
+        PlayerPrefs.SetFloat("MusicVolume", vol);
     }
 
     public void SetSfxVolume(float vol)
     {
         float volumeToSet = vol * GetMasterVolume();
         soundFXObject.volume = volumeToSet;
-        PlayerPrefs.SetFloat("SfxVolume", volumeToSet);
+        PlayerPrefs.SetFloat("SfxVolume", vol);
     }
 
     public void SetMasterVolume(float vol)
