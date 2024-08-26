@@ -494,6 +494,8 @@ GameObject:
   - component: {fileID: 3145013279874909131}
   - component: {fileID: 4657164168501729152}
   - component: {fileID: 3038330958653921976}
+  - component: {fileID: 494072241492776796}
+  - component: {fileID: 5220551698496398980}
   m_Layer: 5
   m_Name: MusicScreen_SongRow
   m_TagString: Untagged
@@ -607,3 +609,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &494072241492776796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203793138266480564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd866bbb8ee54e0db7b98ebd9ec1b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMenuButtonController: {fileID: 0}
+  animator: {fileID: 3038330958653921976}
+  musicAnimatorFunctions: {fileID: 0}
+  thisIndex: 0
+--- !u!114 &5220551698496398980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8203793138266480564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9a106c90b5d4887b998ddc50ac4fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicMenuButtonController: {fileID: 0}
+  disableOnce: 0
