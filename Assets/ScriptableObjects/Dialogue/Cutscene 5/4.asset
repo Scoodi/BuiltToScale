@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 4
   m_EditorClassIdentifier: 
   SpeakerName: Keith
-  SpeakerText: A robot that sends and receive messages between residents various
+  SpeakerText: A robot that sends and receives messages between the residents various
     mountains wirelessly...
+  audio: {fileID: 0}

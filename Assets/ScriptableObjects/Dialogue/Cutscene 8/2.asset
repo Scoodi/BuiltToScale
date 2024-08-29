@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   SpeakerName: Bekka
-  SpeakerText: I'm so lucky. This mountain, the residents, this job- it fill me with
-    so much joy.
+  SpeakerText: I'm so lucky. This mountain, the residents, this job- it fills me
+    with so much joy.
+  audio: {fileID: 0}

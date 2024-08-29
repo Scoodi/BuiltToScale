@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: 7
   m_EditorClassIdentifier: 
   SpeakerName: Keith
-  SpeakerText: Oh you betcha.. His name is Ke1th!
+  SpeakerText: Oh you betcha! His name is Ke1th!
+  audio: {fileID: 0}
