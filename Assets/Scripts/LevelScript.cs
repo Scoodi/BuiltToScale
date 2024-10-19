@@ -124,6 +124,21 @@ public class LevelScript : MonoBehaviour
         return settled;
     }
 
+    void LockAllPlacedBlocks()
+    {
+        for (int i = 0; i < InventoryUI.Instance.placedRBs.Count; i++)
+        {
+            if (InventoryUI.Instance.placedRBs[i] == null)
+            {
+                InventoryUI.Instance.placedRBs.Remove(InventoryUI.Instance.placedRBs[i]);
+            }
+        }
+        foreach (Rigidbody2D rb in InventoryUI.Instance.placedRBs)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+    }
+
     IEnumerator SettleCountdown()
     {
         if (!isCheckingPieces)
@@ -148,6 +163,7 @@ public class LevelScript : MonoBehaviour
             {
                 InventoryUI.Instance.DestroyCurrentBlock();
                 InventoryUI.Instance.HideGamepadCursor();
+
                 PlatformerCharacterScript.Instance.SwapMode();
                 buildModeButton.gameObject.SetActive(false);
                 playModeButton.SetActive(true);
@@ -155,7 +171,7 @@ public class LevelScript : MonoBehaviour
                 countdownText.color = piecesSettledColor;
                 countdownText.text = "Pieces Settled!";
                 countdownText.DOFade(0, 3f);
-
+                LockAllPlacedBlocks();
                 Debug.Log("Settled");
                 isCheckingPieces = false;
             }

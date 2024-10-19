@@ -954,6 +954,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 147291186}
     - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
+      propertyPath: maxVelocity
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417792951716805528, guid: d7b964be49ef1b04a9b8da819e7047c0, type: 3}
       propertyPath: stageFirstLevels.Array.size
       value: 3
       objectReference: {fileID: 0}

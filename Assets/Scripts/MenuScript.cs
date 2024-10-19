@@ -158,6 +158,11 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene(stageIntroCutscenes[cutsceneStage]);
     }
 
+    public void LoadLoFi ()
+    {
+        Application.OpenURL("https://www.youtube.com/watch?v=eVGbMxVQLaI");
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
