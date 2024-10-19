@@ -22,6 +22,7 @@ public class InventoryUI : MonoBehaviour
     private float currentBlockRotation = 0f;
     public List<Rigidbody2D> placedRBs = new List<Rigidbody2D>();
     GameObject currentBlock = null;
+    SpriteRenderer currentBlockRend = null;
 
     public List<RectTransform> buttonPositions = new List<RectTransform>();
     public List<bool> IsButtonActive = new List<bool>();
@@ -96,6 +97,7 @@ public class InventoryUI : MonoBehaviour
         {
             currentBlock.transform.position = cursorPos;
             currentBlock.transform.rotation = Quaternion.EulerRotation(Vector3.forward * currentBlockRotation);
+            CheckIfPlacable();
         }
         storedMousePos = Input.mousePosition;
     }
@@ -153,6 +155,7 @@ public class InventoryUI : MonoBehaviour
                 //cursorPos = mousepos;
                 currentGamepadPos = int.Parse(obj.name);
                 currentBlock = Instantiate(inventory.GetLoadedBlocks()[int.Parse(obj.name)], mousepos, Quaternion.identity);
+                currentBlockRend = currentBlock.GetComponentInChildren<SpriteRenderer>();
                 //buttonPositions[int.Parse(obj.name)].GetComponentInChildren<Button>().interactable = false;
                 //IsButtonActive[int.Parse(obj.name)] = false;
             }
@@ -195,6 +198,29 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    void CheckIfPlacable()
+    {
+        if (currentBlock != null && !LevelScript.Instance.gamePaused)
+        {
+            bool canPlace = true;
+            foreach (Collider2D col in currentBlock.GetComponents<Collider2D>())
+            {
+                List<Collider2D> overlapResults = new List<Collider2D>();
+                Physics2D.OverlapCollider(col, new ContactFilter2D(), overlapResults);
+                if (overlapResults.Count != 0)
+                {
+                    canPlace = false;
+                    currentBlockRend.color = Color.grey;
+                }
+            }
+            if (canPlace)
+            {
+                currentBlockRend.color = Color.white;
+            }
+
+        }
+    }
+
     void TryDropBlock()
     {
         if (currentBlock != null && !LevelScript.Instance.gamePaused)
@@ -221,6 +247,7 @@ public class InventoryUI : MonoBehaviour
                 buttonPositions[currentGamepadPos].GetComponentInChildren<Button>().interactable = false;
                 IsButtonActive[currentGamepadPos] = false;
                 currentBlock = null;
+                currentBlockRend = null;
             }
             
         }
@@ -242,6 +269,7 @@ public class InventoryUI : MonoBehaviour
         {
             Destroy(currentBlock);
             currentBlock = null;
+            currentBlockRend = null;
         }
         
     }
