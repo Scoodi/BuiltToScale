@@ -241,5 +241,4 @@ public class LevelScript : MonoBehaviour
         SoundManager.Instance.PlaySFXClip(pauseClickSound, Camera.main.transform);
         pauseMenu.SetActive(gamePaused);
     }
-
 }
