@@ -172,6 +172,8 @@ public class LevelScript : MonoBehaviour
     {
         //StartCoroutine(LevelTransition(currentLevel));
         LoadLevel(currentLevel);
+        StopCoroutine("SettleCountdown");
+        countdownText.DOFade(0, 0.1f);
     }
 
     IEnumerator LevelTransition(LevelSO nextLevel)
@@ -224,6 +226,7 @@ public class LevelScript : MonoBehaviour
         buildModeButton.gameObject.SetActive(true);
         currentLevel = levelToLoad;
         InventoryUI.Instance.ReloadInventoryBlocks();
+        InventoryUI.Instance.DestroyCurrentBlock();
     }
 
     public void PauseGame()

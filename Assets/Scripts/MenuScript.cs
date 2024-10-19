@@ -149,6 +149,7 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.SetInt("Difficulty", difficulty);
         //SceneManager.LoadScene("GameScene");
         SceneManager.LoadScene("Cutscene 1 - Opening");
+        Time.timeScale = 1f;
     }
 
     public void StartCutscene(int cutsceneStage)

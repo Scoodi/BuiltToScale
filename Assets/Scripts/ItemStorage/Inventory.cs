@@ -32,10 +32,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ClearBlocks();
-        }
+
     }
     public List<GameObject> GetLoadedBlocks()
     {
